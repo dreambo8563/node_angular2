@@ -15,7 +15,11 @@
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "systemjs": "^0.19.6",
-    "typescript": "^1.7.3"
+    "typescript": "^1.7.3",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-notify": "^2.2.0"
   },
   "repository": {
     "type": "git",

@@ -1,11 +1,23 @@
 {
-  "compilerOptions": {
-    "target": "ES5",
-    "module": "commonjs",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false
-  }
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "watch": true,
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "files": [
+        "./typings/tsd.d.ts",
+        "./public/script/app.ts"
+    ]
 }
