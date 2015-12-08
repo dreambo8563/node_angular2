@@ -12,11 +12,11 @@ gulp.task('default', function() {
 	nodemon({
 		// the script to run the app
 		exec: 'node --debug',
-		script: './bin/www',
+		script: 'app.js',
 		ext: 'js',
 	}).on('restart', function(){
 		// when the app has restarted, run livereload.
-		gulp.src('./bin/www')
+		gulp.src('.app.js')
 			.pipe(livereload())
 			.pipe(notify('Reloading page, please wait...'));
 	})

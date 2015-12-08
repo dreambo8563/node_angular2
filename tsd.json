@@ -7,6 +7,27 @@
   "installed": {
     "angular2/angular2.d.ts": {
       "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "mime/mime.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "express/express.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "node/node.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "5c3e47967affa3c4128a3875d1664ba206ae1b0f"
     }
   }
 }

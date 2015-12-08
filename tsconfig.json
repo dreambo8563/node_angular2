@@ -18,6 +18,9 @@
     },
     "files": [
         "./typings/tsd.d.ts",
-        "./public/script/app.ts"
+        "./public/script/app.ts",
+        "app.ts",
+        "./routes/index.ts",
+        "./routes/users.ts"
     ]
 }
