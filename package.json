@@ -11,15 +11,16 @@
     "debug": "~2.2.0",
     "ejs": "^2.3.4",
     "express": "~4.13.1",
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.1.0",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "systemjs": "^0.19.6",
-    "typescript": "^1.7.3",
-    "gulp": "^3.9.0",
-    "gulp-livereload": "^3.8.1",
-    "gulp-nodemon": "^2.0.4",
-    "gulp-notify": "^2.2.0"
+    "typescript": "^1.7.3"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/dreambo8563/node_angular2/issues"
   },
-  "homepage": "https://github.com/dreambo8563/node_angular2#readme"
+  "homepage": "https://github.com/dreambo8563/node_angular2#readme",
+  "devDependencies": {
+    "gulp-autoprefixer": "^3.1.0"
+  }
 }
