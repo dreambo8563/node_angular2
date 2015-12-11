@@ -1,3 +1,5 @@
+/// <reference path="./typings/tsd.d.ts" />
+
 import * as express from 'express';
 import * as path from 'path';
 // var favicon = require('serve-favicon');
@@ -6,7 +8,7 @@ import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 
 import * as routes from'./routes/index';
-import * as users from './routes/users';
+import * as logo from './routes/logo';
 
 let app = express();
 
@@ -24,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/logo', logo);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {

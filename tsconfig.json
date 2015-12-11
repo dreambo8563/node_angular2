@@ -21,6 +21,6 @@
         "./public/script/app.ts",
         "app.ts",
         "./routes/index.ts",
-        "./routes/users.ts"
+        "./routes/logo.ts"
     ]
 }

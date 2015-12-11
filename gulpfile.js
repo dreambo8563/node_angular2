@@ -5,13 +5,35 @@ var autoprefixer = require('gulp-autoprefixer');
 var nodemon = require('gulp-nodemon');
 var notify = require('gulp-notify');
 var livereload = require('gulp-livereload');
+var ts = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
+
 var input = './public/scss/*.scss';
 var output = './public/stylesheets/';
+
 
 var sassOptions = {
     errLogToConsole: true,
     outputStyle: 'expanded'
 };
+
+var tsOptions = { target: "ES5",
+        module: "commonjs",
+        sourceMap: true,
+        watch: true,
+        moduleResolution: "node",
+        isolatedModules: false,
+        jsx: "react",
+        experimentalDecorators: true,
+        emitDecoratorMetadata: true,
+        declaration: true,
+        noImplicitAny: false,
+        noExternalResolve :true,
+        removeComments: true,
+        noLib: false,
+        preserveConstEnums: true,
+        suppressImplicitAnyIndexErrors: true
+        };
 
 // Task
 gulp.task('liveload', function () {
@@ -32,10 +54,12 @@ gulp.task('liveload', function () {
 });
 
 gulp.task('watch', function () {
-    return gulp
+     
     // Watch the input folder for change,
     // and run `sass` task when something happens
-        .watch(input, ['sass'])
+        gulp.watch(input, ['sass'])
+        gulp.watch('./routes/**/*.ts', ['ts'])
+         gulp.watch('./*.ts', ['ts'])
     // When there is a change,
     // log a message in the console
         .on('change', function (event) {
@@ -52,4 +76,14 @@ gulp.task('sass', function () {
         .pipe(gulp.dest(output));
 });
 
-gulp.task('default', ['sass', 'liveload', 'watch']);
+// Compile typescript sources
+gulp.task('ts', function() {  
+   var tsResult = gulp.src(['./*.ts','./routes/**/*.ts','./typings/**/*.ts'], { base: "." })
+                        .pipe(sourcemaps.init())
+                        .pipe(ts(tsOptions))
+                        return tsResult.js
+                        .pipe(sourcemaps.write())
+                        .pipe(gulp.dest('./'));
+});
+
+gulp.task('default', ['sass','ts', 'liveload', 'watch']);

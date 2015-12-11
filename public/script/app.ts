@@ -1,3 +1,6 @@
+/// <reference path="./../../typings/angular2/angular2.d.ts" />
+
+
 import {bootstrap, Component} from 'angular2/angular2';
 
 @Component({
