@@ -14,7 +14,7 @@ $infoTitleFontSize:12px;
 @import "retina";
 
 @mixin HelvBold {
-  font-family: Helvetica;
+//   font-family: Helvetica;
   font-style: normal;
   font-variant: normal;
   font-weight: bold;
@@ -31,7 +31,7 @@ $infoTitleFontSize:12px;
 }
 
 @mixin HelvNor {
-  font-family: Helvetica;
+//   font-family: Helvetica;
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
