@@ -5,8 +5,9 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "build:sass":"node-sass -w app/scss/ -o app/style/",
     "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "start": "concurrent \"npm run tsc:w\" \"npm run build:sass\" \"npm run lite\" "
   },
   "repository": {
     "type": "git",
