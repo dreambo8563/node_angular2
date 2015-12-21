@@ -16,7 +16,6 @@
     "gulp-nodemon": "^2.0.4",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.1.0",
-    "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
     "systemjs": "^0.19.6",
