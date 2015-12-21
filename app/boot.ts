@@ -1,4 +1,4 @@
 import {bootstrap}    from 'angular2/platform/browser'
-import {AppComponent} from './app.component'
+import {Reddit} from './Reddit'
 
-bootstrap(AppComponent);
+bootstrap(Reddit);

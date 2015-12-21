@@ -1,7 +1,7 @@
 <html>
 
-  <head>
-    <title>Angular 2 QuickStart</title>
+<head>
+    <title>Angular 2 - Simple Reddit</title>
 
     <!-- 1. Load libraries -->
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
@@ -9,9 +9,11 @@
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
+    <!--style-->
+    <link rel="stylesheet" type="text/css" class="ui" href="./app/style/semantic.css">
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
+        System.config({
         packages: {        
           app: {
             format: 'register',
@@ -23,11 +25,12 @@
             .then(null, console.error.bind(console));
     </script>
 
-  </head>
+</head>
 
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
+<!-- 3. Display the application -->
+
+<body>
+    <reddit>Loading...</reddit>
+</body>
 
 </html>
