@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es5",
         "module": "commonjs",
         "sourceMap": true,
         "watch": true,
@@ -20,7 +20,6 @@
         "./typings/tsd.d.ts",
         "./public/script/app.ts",
         "app.ts",
-        "./routes/index.ts",
-        "./routes/logo.ts"
+        "./routes/index.ts"
     ]
 }
