@@ -1,0 +1,12 @@
+form.form.ui {
+  background-color: lightseagreen;
+  width: 50%;
+  margin-left: 25%; }
+
+.ui.grid {
+  width: 50%;
+  margin-left: 25%; }
+
+.wide.column.votes {
+  display: flex;
+  flex-direction: row; }
