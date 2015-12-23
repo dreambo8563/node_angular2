@@ -20,7 +20,7 @@ There are two important pieces of functionality that NgForm gives us:
         <form [ngFormModel]="myForm" (submit)="onSubmit(myForm.value)">
             <div class="form-group">
                 <label for="skuInput">SKU</label>
-                <input type="text" class="form-control" id="skuInput" placeholder="SKU" [ngFormControl]="myForm.controls['sku']"></div>
+                <input type="text" required minlength="4" class="form-control" id="skuInput" placeholder="SKU" [ngFormControl]="myForm.controls['sku']"></div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
         </div>
@@ -35,14 +35,25 @@ to a <form> that has ng-form-model
     //FormBuilder
     constructor(fb: FormBuilder) {
         this.myForm = fb.group({
-            'sku': ['abc123']
-        })
+            'sku': ['']
+        });
+        
+        this.myForm.valueChanges.subscribe(
+            (value)=>{
+            console.log('Form change -value:' ,value);  
+        });
+        
+        this.myForm.controls['sku'].valueChanges.subscribe(
+            (value)=>{
+                console.log('sku value:', value);
+            }
+        );
     }
 
     onSubmit(value) {
         console.log('submit value:', value);
-
     }
+    
 }
 export class DemoFormsSku {
     onSubmit(value) {
