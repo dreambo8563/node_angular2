@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {NgFor} from "angular2/common";
+import {DemoFormsSkuBuilder} from './demo_form_sku';
 
 /**
  * A good practice when writing Angular code is to try to isolate the data structures you are using from
@@ -110,7 +111,7 @@ class ArticleComponent {
 
 @Component({
     selector: 'reddit',
-    directives: [ArticleComponent],
+    directives: [ArticleComponent,DemoFormsSkuBuilder],
     template: `
     <form class="ui large form segment">
         <h3 class="ui header">Add a Link</h3>
@@ -131,6 +132,7 @@ class ArticleComponent {
         <reddit-article *ngFor="#article of sortArticles()" [article] = "article">
         </reddit-article>
     </div>
+    <demo-form-sku></demo-form-sku>
     `
 })
 export class Reddit {

@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './demo_form_sku'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, demo_form_sku_1;
     var Article, ArticleComponent, Reddit;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (demo_form_sku_1_1) {
+                demo_form_sku_1 = demo_form_sku_1_1;
             }],
         execute: function() {
             /**
@@ -102,8 +105,8 @@ System.register(['angular2/core'], function(exports_1) {
                 Reddit = __decorate([
                     core_1.Component({
                         selector: 'reddit',
-                        directives: [ArticleComponent],
-                        template: "\n    <form class=\"ui large form segment\">\n        <h3 class=\"ui header\">Add a Link</h3>\n        <div class=\"field\">\n            <label for=\"title\">Title</label>\n            <input name=\"title\" #newtitle>\n        </div>\n        <div class=\"field\">\n            <label for=\"link\">Link</label>\n            <input name=\"link\" #newlink>\n        </div>\n        <button (click)=\"addArticle(newtitle,newlink)\" class=\"ui positive right floated button\">\n            Submit link\n        </button>\n    </form>\n    \n    <div class=\"grid ui posts\">\n        <reddit-article *ngFor=\"#article of sortArticles()\" [article] = \"article\">\n        </reddit-article>\n    </div>\n    "
+                        directives: [ArticleComponent, demo_form_sku_1.DemoFormsSkuBuilder],
+                        template: "\n    <form class=\"ui large form segment\">\n        <h3 class=\"ui header\">Add a Link</h3>\n        <div class=\"field\">\n            <label for=\"title\">Title</label>\n            <input name=\"title\" #newtitle>\n        </div>\n        <div class=\"field\">\n            <label for=\"link\">Link</label>\n            <input name=\"link\" #newlink>\n        </div>\n        <button (click)=\"addArticle(newtitle,newlink)\" class=\"ui positive right floated button\">\n            Submit link\n        </button>\n    </form>\n    \n    <div class=\"grid ui posts\">\n        <reddit-article *ngFor=\"#article of sortArticles()\" [article] = \"article\">\n        </reddit-article>\n    </div>\n    <demo-form-sku></demo-form-sku>\n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Reddit);
