@@ -20,27 +20,32 @@ There are two important pieces of functionality that NgForm gives us:
         <form [ngFormModel]="myForm" (submit)="onSubmit(myForm.value)">
             <div class="form-group">
                 <label for="skuInput">SKU</label>
-                <input type="text" class="form-control" id="skuInput" placeholder="SKU" ngControl="sku"></div>
+                <input type="text" class="form-control" id="skuInput" placeholder="SKU" [ngFormControl]="myForm.controls['sku']"></div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
         </div>
     `
 })
-export class DemoFormsSkuBuilder{
+export class DemoFormsSkuBuilder {
+    /**
+     * NgForm won’t be applied
+to a <form> that has ng-form-model
+     */
     myForm: ControlGroup;
-    constructor(fb:FormBuilder){
+    //FormBuilder
+    constructor(fb: FormBuilder) {
         this.myForm = fb.group({
-            'sku':['abc123']
+            'sku': ['abc123']
         })
     }
-    
-    onSubmit(value){
+
+    onSubmit(value) {
         console.log('submit value:', value);
-        
+
     }
 }
-export class DemoFormsSku{
-    onSubmit(value){
+export class DemoFormsSku {
+    onSubmit(value) {
         console.log('you submitted value: ', value);
     }
 }
@@ -55,4 +60,14 @@ export class DemoFormsSku{
 //Don’t try to use ng-control without an NgForm parent or you’ll have problems.
 
 
-//FormBuilder
+
+
+
+/**
+ * To create a new ControlGroup and Controls implicitly use:
+• ng-form and
+• ng-control
+But to bind to an existing ControlGroup and Controls use:
+• ng-form-model and
+• ng-form-control
+ */

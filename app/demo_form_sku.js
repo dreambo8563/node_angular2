@@ -20,6 +20,7 @@ System.register(['angular2/core', "angular2/common"], function(exports_1) {
             }],
         execute: function() {
             DemoFormsSkuBuilder = (function () {
+                //FormBuilder
                 function DemoFormsSkuBuilder(fb) {
                     this.myForm = fb.group({
                         'sku': ['abc123']
@@ -42,7 +43,7 @@ System.register(['angular2/core', "angular2/common"], function(exports_1) {
                     2. A (submit) action
                          */
                         directives: [common_1.FORM_DIRECTIVES],
-                        template: "\n    <div>\n        <h2>Demo Form: Sku</h2>\n        <form [ngFormModel]=\"myForm\" (submit)=\"onSubmit(myForm.value)\">\n            <div class=\"form-group\">\n                <label for=\"skuInput\">SKU</label>\n                <input type=\"text\" class=\"form-control\" id=\"skuInput\" placeholder=\"SKU\" ngControl=\"sku\"></div>\n            <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n        </form>\n        </div>\n    "
+                        template: "\n    <div>\n        <h2>Demo Form: Sku</h2>\n        <form [ngFormModel]=\"myForm\" (submit)=\"onSubmit(myForm.value)\">\n            <div class=\"form-group\">\n                <label for=\"skuInput\">SKU</label>\n                <input type=\"text\" class=\"form-control\" id=\"skuInput\" placeholder=\"SKU\" [ngFormControl]=\"myForm.controls['sku']\"></div>\n            <button type=\"submit\" class=\"btn btn-default\">Submit</button>\n        </form>\n        </div>\n    "
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder])
                 ], DemoFormsSkuBuilder);
@@ -68,5 +69,12 @@ System.register(['angular2/core', "angular2/common"], function(exports_1) {
     key/value pairs of this ControlGroup
  */
 //Don’t try to use ng-control without an NgForm parent or you’ll have problems.
-//FormBuilder
+/**
+ * To create a new ControlGroup and Controls implicitly use:
+• ng-form and
+• ng-control
+But to bind to an existing ControlGroup and Controls use:
+• ng-form-model and
+• ng-form-control
+ */ 
 //# sourceMappingURL=demo_form_sku.js.map
