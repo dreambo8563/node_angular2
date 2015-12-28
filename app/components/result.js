@@ -23,8 +23,8 @@ System.register(['angular2/core'], function(exports_1) {
                     core_1.Component({
                         selector: 'result',
                         inputs: ['item'],
-                        host: { class: 'col-xs-2 col-xs-offset-1 resultItem' },
-                        template: "\n                <div class=\"row\">\n                    <div class=\"col-xs-6\">{{item.owner.login}}</div>\n                    <div class=\"col-xs-6\">\n                        <img src={{item.owner.avatar_url}} class=\"img-responsive\">\n                    </div>\n                    <div class=\"col-xs-8\">\n                        <button type=\"button\" class=\"btn btn-default btn-lg\">\n                            <span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> {{item.stargazers_count}}\n                        </button>\n                    </div>\n                    <div class=\"col-xs-4\">\n                       <a href={{item.html_url}}> Watching</a>\n                    </div>\n                </div>  \n    "
+                        host: { class: 'col-xs-2 col-xs-offset-1 resultItem itemSpace' },
+                        template: "\n                <div class=\"row\">\n                    <div class=\"col-xs-6\">{{item.owner.login}}</div>\n                    <div class=\"col-xs-6\">\n                        <img src={{item.owner.avatar_url}} class=\"img-responsive\">\n                    </div>\n                    <div class=\"col-xs-8\">\n                        <button type=\"button\" class=\"btn btn-default btn-lg\">\n                            <span class=\"glyphicon glyphicon-star\" aria-hidden=\"true\"></span> {{item.stargazers_count}}\n                        </button>\n                    </div>\n                    <div class=\"col-xs-4\" style=\"margin-top:20px;\">\n                       <a href={{item.html_url}} > Watching</a>\n                    </div>\n                </div>  \n    "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], Result);

@@ -4,7 +4,7 @@ import {NgFor} from "angular2/common";
 @Component({
     selector: 'result',
     inputs: ['item'],
-    host: { class: 'col-xs-2 col-xs-offset-1 resultItem' },
+    host: { class: 'col-xs-2 col-xs-offset-1 resultItem itemSpace' },
     template: `
                 <div class="row">
                     <div class="col-xs-6">{{item.owner.login}}</div>
@@ -16,8 +16,8 @@ import {NgFor} from "angular2/common";
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{item.stargazers_count}}
                         </button>
                     </div>
-                    <div class="col-xs-4">
-                       <a href={{item.html_url}}> Watching</a>
+                    <div class="col-xs-4" style="margin-top:20px;">
+                       <a href={{item.html_url}} > Watching</a>
                     </div>
                 </div>  
     `
