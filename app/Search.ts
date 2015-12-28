@@ -42,7 +42,7 @@ export class Search {
     responseData = [];
 
     constructor(http: Http) {
-        console.log(!!this.responseData.length);
+        // console.log(!!this.responseData.length);
         this.http = http;
         this.searchEl = document.querySelector('.searchInput');
         this.keyups = Rx.Observable.fromEvent(this.searchEl, 'keyup');
