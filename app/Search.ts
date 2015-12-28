@@ -3,6 +3,7 @@ import {NgFor} from "angular2/common";
 import * as Rx from 'rxjs/Rx';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {Result} from './components/result';
+import {sortBy} from './pipes/sort';
 
 /**
  * A good practice when writing Angular code is to try to isolate the data structures you are using from
@@ -13,6 +14,7 @@ the component code.
     selector: 'buttons',
     providers: [HTTP_PROVIDERS],
     directives: [Result],
+    pipes: [sortBy],
     styleUrls: ['app/style/search.css'],
     template: `
     <div class="container">
@@ -22,10 +24,9 @@ the component code.
             </div>
         </div>
            <div class="row">
-        <div class="col-xs-12 searchResults">
+        <div class="col-xs-12 searchResults" [style.marginTop]="!responseData.length? '150px' : '50px'">
            <h2 *ngIf="!responseData.length"> Please input your keyword to search on Github</h2>
-           <result *ngFor="#item of responseData; #i = index" [item] = "item">
-           <div class="itemSpace"></div>
+           <result *ngFor="#item of responseData|sortBy:'stargazers_count'; #i = index" [item] = "item">
            </result>
         </div>
     </div> 
@@ -33,7 +34,7 @@ the component code.
   
     `
 })
-export class Buttons {
+export class Search {
     searchEl;
     http: Http;
     keyups: Rx.Observable<any>;
@@ -54,7 +55,7 @@ export class Buttons {
         this.requestStream.subscribe((x) => {
             this.http.get("https://api.github.com/search/repositories?q=" + x).subscribe(res=> {
                 this.responseData = res.json().items;
-                console.log(res.json().items);
+                // console.log(res.json().items);
             });
         });
     }

@@ -16,11 +16,20 @@ System.register(['angular2/core'], function(exports_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            /**
+             *  * Example:
+             *   {{ products |  sortBy: scores}}
+             *   sortBy product.scores in the array of products
+            */
             sortBy = (function () {
                 function sortBy() {
                 }
-                sortBy.prototype.transform = function (value, args) {
-                    return Math.pow(value, parseInt(args[0] || '1', 10));
+                sortBy.prototype.transform = function (inputArray, args) {
+                    var prop = args[0];
+                    return inputArray.sort(function (a, b) {
+                        // console.log(a[prop]);
+                        return (b[prop] - a[prop]);
+                    });
                 };
                 sortBy = __decorate([
                     core_1.Pipe({ name: 'sortBy' }), 

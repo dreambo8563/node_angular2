@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/result'], function(exports_1) {
+System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/result', './pipes/sort'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx, http_1, result_1;
-    var Buttons;
+    var core_1, Rx, http_1, result_1, sort_1;
+    var Search;
     return {
         setters:[
             function (core_1_1) {
@@ -23,14 +23,17 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
             },
             function (result_1_1) {
                 result_1 = result_1_1;
+            },
+            function (sort_1_1) {
+                sort_1 = sort_1_1;
             }],
         execute: function() {
             /**
              * A good practice when writing Angular code is to try to isolate the data structures you are using from
             the component code.
              */
-            Buttons = (function () {
-                function Buttons(http) {
+            Search = (function () {
+                function Search(http) {
                     var _this = this;
                     this.responseData = [];
                     console.log(!!this.responseData.length);
@@ -45,24 +48,25 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                     this.requestStream.subscribe(function (x) {
                         _this.http.get("https://api.github.com/search/repositories?q=" + x).subscribe(function (res) {
                             _this.responseData = res.json().items;
-                            console.log(res.json().items);
+                            // console.log(res.json().items);
                         });
                     });
                 }
-                Buttons = __decorate([
+                Search = __decorate([
                     core_1.Component({
                         selector: 'buttons',
                         providers: [http_1.HTTP_PROVIDERS],
                         directives: [result_1.Result],
+                        pipes: [sort_1.sortBy],
                         styleUrls: ['app/style/search.css'],
-                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData; #i = index\" [item] = \"item\">\n           <div class=\"itemSpace\"></div>\n           </result>\n        </div>\n    </div> \n    </div>\n  \n    "
+                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults\" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\">\n           </result>\n        </div>\n    </div> \n    </div>\n  \n    "
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], Buttons);
-                return Buttons;
+                ], Search);
+                return Search;
             })();
-            exports_1("Buttons", Buttons);
+            exports_1("Search", Search);
         }
     }
 });
-//# sourceMappingURL=Buttons.js.map
+//# sourceMappingURL=Search.js.map

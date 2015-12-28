@@ -1,9 +1,16 @@
 import {Pipe} from 'angular2/core';
-
-
+/**
+ *  * Example:
+ *   {{ products |  sortBy: scores}}
+ *   sortBy product.scores in the array of products
+*/
 @Pipe({ name: 'sortBy' })
 export class sortBy {
-    transform(value: number, args: string[]): any {
-        return Math.pow(value, parseInt(args[0] || '1', 10));
+    transform(inputArray: Array<any>, args: string[]): any {
+        let prop = args[0];
+        return inputArray.sort(function(a, b) {
+            // console.log(a[prop]);
+            return (b[prop]- a[prop] );
+        });
     }
 }

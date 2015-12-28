@@ -1,15 +1,15 @@
-System.register(['angular2/platform/browser', './Buttons'], function(exports_1) {
-    var browser_1, Buttons_1;
+System.register(['angular2/platform/browser', './Search'], function(exports_1) {
+    var browser_1, Search_1;
     return {
         setters:[
             function (browser_1_1) {
                 browser_1 = browser_1_1;
             },
-            function (Buttons_1_1) {
-                Buttons_1 = Buttons_1_1;
+            function (Search_1_1) {
+                Search_1 = Search_1_1;
             }],
         execute: function() {
-            browser_1.bootstrap(Buttons_1.Buttons);
+            browser_1.bootstrap(Search_1.Search);
         }
     }
 });
