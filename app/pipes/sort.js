@@ -9,31 +9,27 @@ System.register(['angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var Reddit;
+    var sortBy;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            /**
-             * A good practice when writing Angular code is to try to isolate the data structures you are using from
-            the component code.
-             */
-            Reddit = (function () {
-                function Reddit() {
+            sortBy = (function () {
+                function sortBy() {
                 }
-                Reddit = __decorate([
-                    core_1.Component({
-                        selector: 'reddit',
-                        template: "\nHello vincent\n    "
-                    }), 
+                sortBy.prototype.transform = function (value, args) {
+                    return Math.pow(value, parseInt(args[0] || '1', 10));
+                };
+                sortBy = __decorate([
+                    core_1.Pipe({ name: 'sortBy' }), 
                     __metadata('design:paramtypes', [])
-                ], Reddit);
-                return Reddit;
+                ], sortBy);
+                return sortBy;
             })();
-            exports_1("Reddit", Reddit);
+            exports_1("sortBy", sortBy);
         }
     }
 });
-//# sourceMappingURL=Reddit.js.map
+//# sourceMappingURL=sort.js.map

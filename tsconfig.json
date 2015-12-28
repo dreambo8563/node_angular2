@@ -10,7 +10,6 @@
     "noImplicitAny": false
   },
   "exclude": [
-    "node_modules",
-    "app/productsList.ts"
+    "node_modules"
   ]
 }

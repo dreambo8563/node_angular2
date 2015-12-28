@@ -5,7 +5,7 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "build:sass":"node-sass -w app/scss/ -o app/style/",
+    "build:sass": "node-sass -w app/scss/ -o app/style/",
     "lite": "lite-server",
     "start": "concurrent \"npm run tsc:w\" \"npm run build:sass\" \"npm run lite\" "
   },
@@ -19,6 +19,7 @@
     "angular2": "^2.0.0-beta.0",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.13",
+    "jquery": "^2.1.4",
     "reflect-metadata": "^0.1.2",
     "rxjs": "^5.0.0-beta.0",
     "systemjs": "^0.19.6",

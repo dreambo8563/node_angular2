@@ -1,4 +1,4 @@
-import {bootstrap}    from 'angular2/platform/browser'
-import {Reddit} from './Reddit'
+import {bootstrap} from 'angular2/platform/browser'
+import {Buttons} from './Buttons'
 
-bootstrap(Reddit);
+bootstrap(Buttons);
