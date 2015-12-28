@@ -36,7 +36,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                 function Search(http) {
                     var _this = this;
                     this.responseData = [];
-                    console.log(!!this.responseData.length);
+                    // console.log(!!this.responseData.length);
                     this.http = http;
                     this.searchEl = document.querySelector('.searchInput');
                     this.keyups = Rx.Observable.fromEvent(this.searchEl, 'keyup');
