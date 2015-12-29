@@ -5,6 +5,7 @@ import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {Result} from './components/result';
 import {sortBy} from './pipes/sort';
 
+
 /**
  * A good practice when writing Angular code is to try to isolate the data structures you are using from
 the component code.
@@ -23,10 +24,18 @@ the component code.
                 <input autofocus type="text" class="form-control searchInput" placeholder="Keywords">
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <h3> From Inner Component:</h3> 
+             </div>
+             <div class="col-xs-8 ">
+                  <img src={{selectedAvatar}} class="img-responsive">
+            </div>
+         </div>
            <div class="row">
-        <div class="col-xs-12 searchResults" [style.marginTop]="!responseData.length? '150px' : '50px'">
+        <div class="col-xs-12 searchResults " [style.marginTop]="!responseData.length? '150px' : '50px'">
            <h2 *ngIf="!responseData.length"> Please input your keyword to search on Github</h2>
-           <result *ngFor="#item of responseData|sortBy:'stargazers_count'; #i = index" [item] = "item">
+           <result *ngFor="#item of responseData|sortBy:'stargazers_count'; #i = index" [item] = "item" (hoverImg)="hoverImg($event)">
            </result>
         </div>
     </div> 
@@ -40,6 +49,7 @@ export class Search {
     keyups: Rx.Observable<any>;
     requestStream: Rx.Observable<any>;
     responseData = [];
+    selectedAvatar: string = null;
 
     constructor(http: Http) {
         // console.log(!!this.responseData.length);
@@ -59,7 +69,10 @@ export class Search {
             });
         });
     }
-
+    hoverImg(url: string) {
+        console.log(url);
+        this.selectedAvatar = url;
+    }
 
 
 }

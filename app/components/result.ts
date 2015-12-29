@@ -1,18 +1,22 @@
-import {Component} from 'angular2/core';
+import {Component, EventEmitter} from 'angular2/core';
 import {NgFor} from "angular2/common";
+import {RotateDirective} from '../directives/rotate';
 
 @Component({
     selector: 'result',
+    directives: [RotateDirective],
+    outputs: ['hoverImg'],
+    styleUrls: ['app/style/search.css'],
     inputs: ['item'],
     host: { class: 'col-xs-2 col-xs-offset-1 resultItem itemSpace' },
     template: `
                 <div class="row">
-                    <div class="col-xs-6">{{item.owner.login}}</div>
+                    <div rotate class="col-xs-6">{{item.owner.login}}</div>
                     <div class="col-xs-6">
-                        <img src={{item.owner.avatar_url}} class="img-responsive">
+                        <img rotate src={{item.owner.avatar_url}} class="img-responsive" (mouseenter)="imgSelected()">
                     </div>
                     <div class="col-xs-8">
-                        <button type="button" class="btn btn-default btn-lg">
+                        <button rotate type="button" class="btn btn-default btn-lg">
                             <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{item.stargazers_count}}
                         </button>
                     </div>
@@ -23,8 +27,14 @@ import {NgFor} from "angular2/common";
     `
 })
 export class Result {
-    item: { [key: string]: any };
+    item;
+    hoverImg: EventEmitter<string>;
     constructor() {
+        this.hoverImg = new EventEmitter();
     }
+    imgSelected() {
+        this.hoverImg.emit(this.item.owner.avatar_url);
+    }
+
 }
 

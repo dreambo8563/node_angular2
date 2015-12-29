@@ -36,6 +36,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                 function Search(http) {
                     var _this = this;
                     this.responseData = [];
+                    this.selectedAvatar = null;
                     // console.log(!!this.responseData.length);
                     this.http = http;
                     this.searchEl = document.querySelector('.searchInput');
@@ -52,6 +53,10 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                         });
                     });
                 }
+                Search.prototype.hoverImg = function (url) {
+                    console.log(url);
+                    this.selectedAvatar = url;
+                };
                 Search = __decorate([
                     core_1.Component({
                         selector: 'buttons',
@@ -59,7 +64,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                         directives: [result_1.Result],
                         pipes: [sort_1.sortBy],
                         styleUrls: ['app/style/search.css'],
-                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults\" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\">\n           {{i}}\n           </result>\n        </div>\n    </div> \n    </div>\n  \n    "
+                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-4\">\n                <h3> From Inner Component:</h3> \n             </div>\n             <div class=\"col-xs-8 \">\n                  <img src={{selectedAvatar}} class=\"img-responsive\">\n            </div>\n         </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults \" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\" (hoverImg)=\"hoverImg($event)\">\n           </result>\n        </div>\n    </div> \n    </div>\n  \n    "
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], Search);

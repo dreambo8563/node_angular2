@@ -5,3 +5,19 @@
 
 .itemSpace {
   margin-top: 150px; }
+
+.rotate {
+  animation-name: roll;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-play-state: running;
+  transform: rotate(30deg);
+  opacity: .7; }
+
+@keyframes roll {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } }
