@@ -31,7 +31,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                 AppRoute = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <h1 class=\"title\">Component Router</h1>\n    <a [routerLink]=\"['Search']\">Search Center</a>\n    <a [routerLink]=\"['Weather']\">Weather</a>\n    <router-outlet></router-outlet>\n  ",
+                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li> <a [routerLink]=\"['Weather']\">Weather</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([

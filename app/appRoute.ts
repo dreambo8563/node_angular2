@@ -4,24 +4,29 @@ import {Weather} from './components/weather';
 import {Search} from './components/Search';
 
 @Component({
-  selector: 'my-app',
-  template: `
-    <h1 class="title">Component Router</h1>
-    <a [routerLink]="['Search']">Search Center</a>
-    <a [routerLink]="['Weather']">Weather</a>
-    <router-outlet></router-outlet>
+    selector: 'my-app',
+    template: `
+ <nav class="navbar navbar-inverse">
+  <div class="container">
+   <ul class="nav navbar-nav">
+     <li class="active"> <a [routerLink]="['Search']">Search</a></li>
+     <li> <a [routerLink]="['Weather']">Weather</a></li>
+    </ul>
+  </div>
+ </nav>   
+ <router-outlet></router-outlet>
   `,
-  directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-  { 
-    path: '/',
-    name: 'Search',
-    component: Search,
-    useAsDefault: true
-  },
-  {path: '/Weather',   name: 'Weather',     component: Weather},
+    {
+        path: '/',
+        name: 'Search',
+        component: Search,
+        useAsDefault: true
+    },
+    { path: '/Weather', name: 'Weather', component: Weather },
 ])
-export class AppRoute{
-    
+export class AppRoute {
+
 }
