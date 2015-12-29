@@ -22,6 +22,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1) {
             Weather = (function () {
                 function Weather(http) {
                     var _this = this;
+                    this.hourly_time = ['时间'];
+                    this.hourly_tmp = ['温度'];
+                    this.hourly_pres = ['气压'];
+                    this.hourly_hum = ['气压'];
                     this.firstHeaders = new http_1.Headers();
                     this.firstHeaders.append('apikey', '1b3e35e5bdb4cced72fae8c2244668a0');
                     this.opts = new http_1.RequestOptions();
@@ -29,7 +33,16 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1) {
                     http.get('http://apis.baidu.com/heweather/weather/free?city=beijing', this.opts).subscribe(function (res) {
                         _this.weatherData = res.json();
                         _this.weatherData = _this.weatherData['HeWeather data service 3.0'][0];
-                        // console.log(this.weatherData);
+                        console.log(_this.weatherData);
+                        for (var _i = 0, _a = _this.weatherData.hourly_forecast; _i < _a.length; _i++) {
+                            var v = _a[_i];
+                            var time = v.date.split(" ")[1];
+                            _this.hourly_time.push(time);
+                            _this.hourly_tmp.push(v.tmp);
+                            _this.hourly_pres.push(v.pres);
+                            _this.hourly_pres.push(v.hum);
+                        }
+                        console.log(_this.hourly_time);
                     });
                 }
                 Weather = __decorate([
