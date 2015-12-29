@@ -32,45 +32,67 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <input type="text" class="form-control" placeholder="Keywords">
+        <dir class="col-xs-3">
+            <h3> 今日天气</h3>
+        </dir>
+        <div class="col-xs-8 col-xs-offset-1">
+            <div class="row">
+                <div class="col-xs-4">
+                    当前温度(摄氏度):
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.now.tmp}}
+                </div>
+                <div class="col-xs-4">
+                    湿度(%):
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.now.hum}}
+                </div>
+                <div class="col-xs-4">
+                    天气状况:
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.now.cond.txt}}
+                </div>
+                <div class="col-xs-4">
+                    降雨量(mm):
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.now.pcpn}}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-3 col-xs-offset-1 resultItem">
-                <div class="row">
-                    <div class="col-xs-6">{{i tem. own er.lo gin}}</div>
-                    <div class="col-xs-6">
-                        <img src="https://avatars.githubusercontent.com/u/15835468?v=3" class="img-responsive">
-                    </div>
-                    <div class="col-xs-8">
-                        <button type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> 88
-                        </button>
-                    </div>
-                    <div class="col-xs-4">
-                        Watching: {{item.html_url}} 
-                    </div>
-                    <!--stars: {{item.stargazers_count}}-->
+        
+        
+        <dir class="col-xs-3">
+            <h3> 今日预报</h3>
+        </dir>
+        <div class="col-xs-8 col-xs-offset-1">
+            <div class="row">
+                <div class="col-xs-4">
+                    时间:
                 </div>
-            </div>
-            <div class="col-xs-3 col-xs-offset-1 resultItem">
-                <div>
-                    Owner's Name: {{item.owner.login}} URL: {{item.html_url}} stars: {{item.stargazers_count}}
-                    <img src={{item.owner.avatar_url}}>
+                <div class="col-xs-8">
+                    {{weatherData.hourly_forecast.date}}
                 </div>
-            </div>
-            <div class="col-xs-3 col-xs-offset-1 resultItem">
-                <div>
-                    Owner's Name: {{item.owner.login}} URL: {{item.html_url}} stars: {{item.stargazers_count}}
-                    <img src={{item.owner.avatar_url}}>
+                <div class="col-xs-4">
+                    湿度(%)::
                 </div>
-            </div>
-            <div class="col-xs-3 col-xs-offset-1 resultItem">
-                <div>
-                    Owner's Name: {{item.owner.login}} URL: {{item.html_url}} stars: {{item.stargazers_count}}
-                    <img src={{item.owner.avatar_url}}>
+                <div class="col-xs-8">
+                    {{weatherData.hourly_forecast.hum}}
+                </div>
+                <div class="col-xs-4">
+                     当前温度(摄氏度):
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.hourly_forecast.tmp}}
+                </div>
+                <div class="col-xs-4">
+                    气压:
+                </div>
+                <div class="col-xs-8">
+                    {{weatherData.hourly_forecast.pres}}
                 </div>
             </div>
         </div>

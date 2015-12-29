@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/result', './pipes/sort'], function(exports_1) {
+System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './result', '../pipes/sort', './weather'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx, http_1, result_1, sort_1;
+    var core_1, Rx, http_1, result_1, sort_1, weather_1;
     var Search;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
             },
             function (sort_1_1) {
                 sort_1 = sort_1_1;
+            },
+            function (weather_1_1) {
+                weather_1 = weather_1_1;
             }],
         execute: function() {
             /**
@@ -49,7 +52,6 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                     this.requestStream.subscribe(function (x) {
                         _this.http.get("https://api.github.com/search/repositories?q=" + x).subscribe(function (res) {
                             _this.responseData = res.json().items;
-                            // console.log(res.json().items);
                         });
                     });
                 }
@@ -61,10 +63,10 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './components/resu
                     core_1.Component({
                         selector: 'buttons',
                         providers: [http_1.HTTP_PROVIDERS],
-                        directives: [result_1.Result],
+                        directives: [result_1.Result, weather_1.Weather],
                         pipes: [sort_1.sortBy],
                         styleUrls: ['app/style/search.css'],
-                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-4\">\n                <h3> From Inner Component:</h3> \n             </div>\n             <div class=\"col-xs-8 \">\n                  <img src={{selectedAvatar}} class=\"img-responsive\">\n            </div>\n         </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults \" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\" (hoverImg)=\"hoverImg($event)\">\n           </result>\n        </div>\n    </div> \n    </div>\n  \n    "
+                        template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-4\" *ngIf=\"selectedAvatar\">\n                <h3> From Inner Component:</h3> \n             </div>\n             <div class=\"col-xs-8 \">\n                  <img src={{selectedAvatar}} class=\"img-responsive\">\n            </div>\n         </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults \" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\" (hoverImg)=\"hoverImg($event)\">\n           </result>\n        </div>\n    </div> \n    </div> \n    "
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], Search);

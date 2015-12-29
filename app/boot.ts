@@ -1,4 +1,5 @@
 import {bootstrap} from 'angular2/platform/browser'
-import {Search} from './Search'
+import {ROUTER_PROVIDERS} from 'angular2/router';
+import {AppRoute} from './AppRoute';
 
-bootstrap(Search);
+bootstrap(AppRoute,[ROUTER_PROVIDERS]);

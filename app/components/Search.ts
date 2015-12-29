@@ -2,8 +2,10 @@ import {Component} from 'angular2/core';
 import {NgFor} from "angular2/common";
 import * as Rx from 'rxjs/Rx';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
-import {Result} from './components/result';
-import {sortBy} from './pipes/sort';
+import {Result} from './result';
+import {sortBy} from '../pipes/sort';
+import {Weather} from './weather';
+
 
 
 /**
@@ -14,7 +16,7 @@ the component code.
 @Component({
     selector: 'buttons',
     providers: [HTTP_PROVIDERS],
-    directives: [Result],
+    directives: [Result,Weather],
     pipes: [sortBy],
     styleUrls: ['app/style/search.css'],
     template: `
@@ -25,7 +27,7 @@ the component code.
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-4" *ngIf="selectedAvatar">
                 <h3> From Inner Component:</h3> 
              </div>
              <div class="col-xs-8 ">
@@ -39,8 +41,7 @@ the component code.
            </result>
         </div>
     </div> 
-    </div>
-  
+    </div> 
     `
 })
 export class Search {
@@ -65,7 +66,6 @@ export class Search {
         this.requestStream.subscribe((x) => {
             this.http.get("https://api.github.com/search/repositories?q=" + x).subscribe(res=> {
                 this.responseData = res.json().items;
-                // console.log(res.json().items);
             });
         });
     }
