@@ -42,8 +42,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './result', '../pi
                     this.selectedAvatar = null;
                     // console.log(!!this.responseData.length);
                     this.http = http;
-                    // this.searchEl = document.querySelector('.searchInput');
-                    this.searchEl = $('.searchInput');
+                    this.searchEl = document.querySelector('.searchInput');
                     this.keyups = Rx.Observable.fromEvent(this.searchEl, 'keyup');
                     this.requestStream = this.keyups
                         .map(function (e) { return e.target.value; })

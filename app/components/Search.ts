@@ -55,8 +55,8 @@ export class Search {
     constructor(http: Http) {
         // console.log(!!this.responseData.length);
         this.http = http;
-        // this.searchEl = document.querySelector('.searchInput');
-        this.searchEl = $('.searchInput');
+        this.searchEl = document.querySelector('.searchInput');
+       
         this.keyups = Rx.Observable.fromEvent(this.searchEl, 'keyup');
         this.requestStream = this.keyups
             .map(e => e.target.value)

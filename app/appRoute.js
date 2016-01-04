@@ -27,11 +27,18 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
         execute: function() {
             AppRoute = (function () {
                 function AppRoute() {
+                    this.navItems = document.querySelectorAll('li');
                 }
+                AppRoute.prototype.loopNav = function (event) {
+                    for (var i = 0; i < this.navItems.length - 1; i++) {
+                        this.navItems[i].className = "";
+                    }
+                    event.target.className = "active";
+                };
                 AppRoute = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li> <a [routerLink]=\"['Weather']\">Weather</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
+                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\" (click)=\"loopNav($event)\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([

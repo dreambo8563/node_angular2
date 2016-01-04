@@ -9,8 +9,8 @@ import {Search} from './components/Search';
  <nav class="navbar navbar-inverse">
   <div class="container" role="navigation">
    <ul class="nav navbar-nav">
-     <li class="active"> <a [routerLink]="['Search']">Search</a></li>
-     <li> <a [routerLink]="['Weather']">Weather</a></li>
+     <li class="active" (click)="loopNav($event)"> <a [routerLink]="['Search']">Search</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
     </ul>
   </div>
  </nav>   
@@ -28,5 +28,17 @@ import {Search} from './components/Search';
     { path: '/Weather', name: 'Weather', component: Weather },
 ])
 export class AppRoute {
+    navItems;
+    constructor() {
+        this.navItems = document.querySelectorAll('li');
+    }
+
+    loopNav(event: any) {
+
+        for (let i = 0; i < this.navItems.length - 1; i++) {
+            this.navItems[i].className = "";
+        }
+        event.target.className = "active";
+    }
 
 }
