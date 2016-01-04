@@ -16,7 +16,7 @@ the component code.
 @Component({
     selector: 'buttons',
     providers: [HTTP_PROVIDERS],
-    directives: [Result,Weather],
+    directives: [Result, Weather],
     pipes: [sortBy],
     styleUrls: ['app/style/search.css'],
     template: `
@@ -55,7 +55,8 @@ export class Search {
     constructor(http: Http) {
         // console.log(!!this.responseData.length);
         this.http = http;
-        this.searchEl = document.querySelector('.searchInput');
+        // this.searchEl = document.querySelector('.searchInput');
+        this.searchEl = $('.searchInput');
         this.keyups = Rx.Observable.fromEvent(this.searchEl, 'keyup');
         this.requestStream = this.keyups
             .map(e => e.target.value)
