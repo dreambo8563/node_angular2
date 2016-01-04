@@ -7,7 +7,7 @@ import {Search} from './components/Search';
     selector: 'my-app',
     template: `
  <nav class="navbar navbar-inverse">
-  <div class="container">
+  <div class="container" role="navigation">
    <ul class="nav navbar-nav">
      <li class="active"> <a [routerLink]="['Search']">Search</a></li>
      <li> <a [routerLink]="['Weather']">Weather</a></li>
