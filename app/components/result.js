@@ -44,4 +44,4 @@ System.register(['angular2/core', '../directives/rotate'], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=result.js.map
+//# sourceMappingURL=Result.js.map

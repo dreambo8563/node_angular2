@@ -2,10 +2,9 @@ import {Component} from 'angular2/core';
 import {NgFor} from "angular2/common";
 import * as Rx from 'rxjs/Rx';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
-import {Result} from './result';
+import {Result} from './Result';
 import {sortBy} from '../pipes/sort';
-import {Weather} from './weather';
-import {Materials} from './Material';
+import {Weather} from './Weather';
 
 
 

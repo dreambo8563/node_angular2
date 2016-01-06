@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
-
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {RotateDirective} from '../directives/rotate';
+import {ShakeOpacityDirective} from '../directives/shake-opacity';
 
 
 
@@ -18,8 +18,8 @@ the component code.
     template: `
         <md-content>
   <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-    <button rotate md-button>{{title1}}</button>
-    <button md-button md-no-ink class="md-primary">Primary (md-noink)</button>
+    <button rotate md-button>{{title1}} </button>
+    <button shakeOpacity md-button md-no-ink class="md-primary">Primary (md-noink)</button>
     <button md-button disabled="true" class="md-primary">Disabled</button>
     <button md-button class="md-warn">{{title4}}</button>
     <div class="label">Flat</div>
@@ -87,7 +87,7 @@ the component code.
   </section>
 </md-content>
     `,
-    directives: [MATERIAL_DIRECTIVES,RotateDirective]
+    directives: [MATERIAL_DIRECTIVES,RotateDirective,ShakeOpacityDirective]
 })
 export class Materials {
     title1: string;
