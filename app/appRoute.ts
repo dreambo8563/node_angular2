@@ -2,6 +2,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Component} from 'angular2/core';
 import {Weather} from './components/weather';
 import {Search} from './components/Search';
+import {Materials} from './components/Material';
 
 @Component({
     selector: 'my-app',
@@ -11,6 +12,7 @@ import {Search} from './components/Search';
    <ul class="nav navbar-nav">
      <li class="active" (click)="loopNav($event)"> <a [routerLink]="['Search']">Search</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['Materials']">Angular2 Material</a></li>
     </ul>
   </div>
  </nav>   
@@ -26,6 +28,7 @@ import {Search} from './components/Search';
         useAsDefault: true
     },
     { path: '/Weather', name: 'Weather', component: Weather },
+     { path: '/Materials', name: 'Materials', component: Materials },
 ])
 export class AppRoute {
     navItems;

@@ -5,6 +5,7 @@ import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {Result} from './result';
 import {sortBy} from '../pipes/sort';
 import {Weather} from './weather';
+import {Materials} from './Material';
 
 
 
