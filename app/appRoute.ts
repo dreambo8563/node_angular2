@@ -3,6 +3,7 @@ import {Component} from 'angular2/core';
 import {Weather} from './components/weather';
 import {Search} from './components/Search';
 import {Materials} from './components/Material';
+import {DemoFormSku} from './components/Form';
 
 @Component({
     selector: 'my-app',
@@ -13,6 +14,7 @@ import {Materials} from './components/Material';
      <li class="active" (click)="loopNav($event)"> <a [routerLink]="['Search']">Search</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['Materials']">Angular2 Material</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
     </ul>
   </div>
  </nav>   
@@ -29,6 +31,7 @@ import {Materials} from './components/Material';
     },
     { path: '/Weather', name: 'Weather', component: Weather },
      { path: '/Materials', name: 'Materials', component: Materials },
+      { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku }
 ])
 export class AppRoute {
     navItems;

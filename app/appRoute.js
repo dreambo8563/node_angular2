@@ -1,4 +1,4 @@
-System.register(['angular2/router', 'angular2/core', './components/weather', './components/Search', './components/Material'], function(exports_1) {
+System.register(['angular2/router', 'angular2/core', './components/weather', './components/Search', './components/Material', './components/Form'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var router_1, core_1, weather_1, Search_1, Material_1;
+    var router_1, core_1, weather_1, Search_1, Material_1, Form_1;
     var AppRoute;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
             },
             function (Material_1_1) {
                 Material_1 = Material_1_1;
+            },
+            function (Form_1_1) {
+                Form_1 = Form_1_1;
             }],
         execute: function() {
             AppRoute = (function () {
@@ -41,7 +44,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                 AppRoute = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\" (click)=\"loopNav($event)\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Materials']\">Angular2 Material</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
+                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\" (click)=\"loopNav($event)\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Materials']\">Angular2 Material</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['DemoFormSku']\">DemoFormSku</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
@@ -53,6 +56,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                         },
                         { path: '/Weather', name: 'Weather', component: weather_1.Weather },
                         { path: '/Materials', name: 'Materials', component: Material_1.Materials },
+                        { path: '/DemoFormSku', name: 'DemoFormSku', component: Form_1.DemoFormSku }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppRoute);
