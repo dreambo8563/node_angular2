@@ -4,6 +4,8 @@ import {Weather} from './components/weather';
 import {Search} from './components/Search';
 import {Materials} from './components/Material';
 import {DemoFormSku} from './components/Form';
+import {ParentApp} from './components/CompLoaderSample';
+
 
 @Component({
     selector: 'my-app',
@@ -15,6 +17,7 @@ import {DemoFormSku} from './components/Form';
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['Materials']">Angular2 Material</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp']">ParentApp</a></li>
     </ul>
   </div>
  </nav>   
@@ -30,8 +33,9 @@ import {DemoFormSku} from './components/Form';
         useAsDefault: true
     },
     { path: '/Weather', name: 'Weather', component: Weather },
-     { path: '/Materials', name: 'Materials', component: Materials },
-      { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku }
+    { path: '/Materials', name: 'Materials', component: Materials },
+    { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku },
+    { path: '/ParentApp', name: 'ParentApp', component: ParentApp }
 ])
 export class AppRoute {
     navItems;
