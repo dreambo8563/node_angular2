@@ -4,7 +4,6 @@ import * as Rx from 'rxjs/Rx';
 import {HTTP_PROVIDERS, Http, Response} from 'angular2/http';
 import {Result} from './Result';
 import {sortBy} from '../pipes/sort';
-import {Weather} from './Weather';
 
 
 
@@ -16,7 +15,7 @@ the component code.
 @Component({
     selector: 'buttons',
     providers: [HTTP_PROVIDERS],
-    directives: [Result, Weather],
+    directives: [Result],
     pipes: [sortBy],
     styleUrls: ['app/style/search.css'],
     template: `
