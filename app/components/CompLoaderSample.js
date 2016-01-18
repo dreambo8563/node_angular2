@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, di_1;
-    var ChildComponent, ParentApp;
+    var ChildComponent, numberItem, numberList, ParentApp;
     return {
         setters:[
             function (core_1_1) {
@@ -31,6 +31,51 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
                 ], ChildComponent);
                 return ChildComponent;
             })();
+            numberItem = (function () {
+                function numberItem(ref) {
+                    this.ref = ref;
+                }
+                numberItem.prototype.ngOnChanges = function () {
+                    // this.ref.detach();
+                    console.log("ngOnChange:", this.number);
+                };
+                numberItem.prototype.changeNumber = function () {
+                    // this.ref.detach();
+                    this.number++;
+                    console.log(this.number);
+                };
+                numberItem = __decorate([
+                    core_1.Component({
+                        selector: 'numberItem',
+                        template: "<div>{{number}}</div>      <button (click)=\"changeNumber()\">changeNumber</button>",
+                        inputs: ['number']
+                    }), 
+                    __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
+                ], numberItem);
+                return numberItem;
+            })();
+            exports_1("numberItem", numberItem);
+            numberList = (function () {
+                function numberList() {
+                    this.numbers = [1, 2, 3, 4];
+                }
+                // ngOnChanges() {
+                //     console.log("ngOnChange:", this.numbers);
+                // }
+                numberList.prototype.addNumbers = function (a) {
+                    this.numbers.push(a);
+                };
+                numberList = __decorate([
+                    core_1.Component({
+                        selector: 'numberList',
+                        template: "\n    <div *ngFor = \"#number of numbers\" >\n<numberItem [number]=\"number\"></numberItem>\n    </div>\n    <input #input />\n    <button (click)=\"addNumbers(input.value)\">addNumbers</button>\n    <div>{{moreNumber}}</div>\n    ",
+                        directives: [numberItem]
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], numberList);
+                return numberList;
+            })();
+            exports_1("numberList", numberList);
             ParentApp = (function () {
                 // constructor(dcl: DynamicComponentLoader, elementRef: ElementRef) {
                 //     dcl.loadIntoLocation(ChildComponent, elementRef, 'child');
@@ -41,7 +86,8 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
                 ParentApp = __decorate([
                     core_1.Component({
                         selector: 'parent-component',
-                        template: 'Parent (<child id="child"></child>)(<child #child></child>)'
+                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>",
+                        directives: [numberList]
                     }), 
                     __metadata('design:paramtypes', [core_1.DynamicComponentLoader, di_1.Injector])
                 ], ParentApp);

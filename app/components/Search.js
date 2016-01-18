@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pipes/sort', './Weather'], function(exports_1) {
+System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pipes/sort'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Rx, http_1, Result_1, sort_1, Weather_1;
+    var core_1, Rx, http_1, Result_1, sort_1;
     var Search;
     return {
         setters:[
@@ -26,9 +26,6 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pi
             },
             function (sort_1_1) {
                 sort_1 = sort_1_1;
-            },
-            function (Weather_1_1) {
-                Weather_1 = Weather_1_1;
             }],
         execute: function() {
             /**
@@ -63,7 +60,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pi
                     core_1.Component({
                         selector: 'buttons',
                         providers: [http_1.HTTP_PROVIDERS],
-                        directives: [Result_1.Result, Weather_1.Weather],
+                        directives: [Result_1.Result],
                         pipes: [sort_1.sortBy],
                         styleUrls: ['app/style/search.css'],
                         template: "\n    <div class=\"container\">\n        <div class=\"row\">\n            <div class=\"col-xs-8 col-xs-offset-2\">\n                <input autofocus type=\"text\" class=\"form-control searchInput\" placeholder=\"Keywords\">\n            </div>\n        </div>\n        <div class=\"row\">\n            <div class=\"col-xs-4\" *ngIf=\"selectedAvatar\">\n                <h3> From Inner Component:</h3> \n             </div>\n             <div class=\"col-xs-8 \">\n                  <img src={{selectedAvatar}} class=\"img-responsive\">\n            </div>\n         </div>\n           <div class=\"row\">\n        <div class=\"col-xs-12 searchResults \" [style.marginTop]=\"!responseData.length? '150px' : '50px'\">\n           <h2 *ngIf=\"!responseData.length\"> Please input your keyword to search on Github</h2>\n           <result *ngFor=\"#item of responseData|sortBy:'stargazers_count'; #i = index\" [item] = \"item\" (hoverImg)=\"hoverImg($event)\">\n           </result>\n        </div>\n    </div> \n    </div> \n    "
