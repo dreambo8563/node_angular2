@@ -14,7 +14,6 @@ class ChildComponent {
     template: `<div>{{number}}</div>      <button (click)="changeNumber()">changeNumber</button>`,
     inputs: ['number']
 })
-
 export class numberItem implements OnChanges {
     number: number;
     ref: ChangeDetectorRef;

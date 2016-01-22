@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, common_1, error_1;
-    var DemoFormSku;
+    var ChildComponent, ChildDir, SomeDir, DemoFormSku;
     return {
         setters:[
             function (core_1_1) {
@@ -22,6 +22,50 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
                 error_1 = error_1_1;
             }],
         execute: function() {
+            ChildComponent = (function () {
+                function ChildComponent() {
+                    this.a = "hha";
+                }
+                ChildComponent = __decorate([
+                    core_1.Component({
+                        selector: 'child-component',
+                        template: '<div>{{a}}</div>'
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], ChildComponent);
+                return ChildComponent;
+            })();
+            ChildDir = (function () {
+                function ChildDir() {
+                    this.exprotAsVar = "exportAs Text";
+                }
+                ChildDir = __decorate([
+                    core_1.Directive({
+                        selector: 'child-dir',
+                        exportAs: 'child'
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], ChildDir);
+                return ChildDir;
+            })();
+            SomeDir = (function () {
+                function SomeDir() {
+                }
+                SomeDir.prototype.ngAfterContentInit = function () {
+                    var a = this.contentChildren;
+                };
+                SomeDir = __decorate([
+                    core_1.Component({
+                        selector: 'someDir',
+                        queries: {
+                            contentChildren: new core_1.ContentChildren(ChildComponent)
+                        },
+                        template: '<div>in  someDir</div>  ',
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], SomeDir);
+                return SomeDir;
+            })();
             DemoFormSku = (function () {
                 function DemoFormSku() {
                 }
@@ -31,8 +75,8 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
                 DemoFormSku = __decorate([
                     core_1.Component({
                         selector: 'demo-form-sku',
-                        directives: [common_1.FORM_DIRECTIVES, error_1.ngError],
-                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n               placeholder=\"SKU\"  \n               ngControl=\"sku\">  \n      \n        <div *ngError =\"'a'\" id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n  "
+                        directives: [common_1.FORM_DIRECTIVES, error_1.ngError, ChildDir, SomeDir, ChildComponent],
+                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n               placeholder=\"SKU\"  \n               ngControl=\"sku\">  \n      \n        <div *ngError =\"'a'\" id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n    <child-dir  #c=\"child\" > houhou</child-dir>{{c.exprotAsVar}}\n   <someDir>\n\n  <child-component></child-component>\n  </someDir>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DemoFormSku);
