@@ -6,7 +6,6 @@ import {Result} from './Result';
 import {sortBy} from '../pipes/sort';
 
 
-
 /**
  * A good practice when writing Angular code is to try to isolate the data structures you are using from
 the component code.

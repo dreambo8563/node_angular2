@@ -44,13 +44,14 @@ export class numberItem implements OnChanges {
     </div>
     <input #input />
     <button (click)="addNumbers(input.value)">addNumbers</button>
-    <div>{{moreNumber}}</div>
+    <div>{{moreNumber}}</div>{{haha | date:'medium'}}
     `,
     directives: [numberItem]
 })
 
 export class numberList  {
     numbers: Array<number>;
+    haha = Date.now();
     constructor() {
         this.numbers = [1, 2, 3, 4];
     }
@@ -69,7 +70,7 @@ export class numberList  {
     selector: 'parent-component',
     template: `Parent (<child id="child"></child>)(<child #child></child>) <numberList></numberList>
      <li> <a [routerLink]="['./NumberList']">NumberList</a></li>
-     <li> <a [routerLink]="['./NumberItem']">NumberItem</a></li>
+     <li> <a [routerLink]="['./NumberItem']"  target="_blank">NumberItem</a></li>
       <router-outlet></router-outlet>`,
     directives: [numberList,ROUTER_DIRECTIVES]
 })

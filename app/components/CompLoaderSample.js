@@ -60,6 +60,7 @@ System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], fu
             exports_1("numberItem", numberItem);
             numberList = (function () {
                 function numberList() {
+                    this.haha = Date.now();
                     this.numbers = [1, 2, 3, 4];
                 }
                 // ngOnChanges() {
@@ -71,7 +72,7 @@ System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], fu
                 numberList = __decorate([
                     core_1.Component({
                         selector: 'numberList',
-                        template: "\n    <div *ngFor = \"#number of numbers\" >\n<numberItem [number]=\"number\"></numberItem>\n    </div>\n    <input #input />\n    <button (click)=\"addNumbers(input.value)\">addNumbers</button>\n    <div>{{moreNumber}}</div>\n    ",
+                        template: "\n    <div *ngFor = \"#number of numbers\" >\n<numberItem [number]=\"number\"></numberItem>\n    </div>\n    <input #input />\n    <button (click)=\"addNumbers(input.value)\">addNumbers</button>\n    <div>{{moreNumber}}</div>{{haha | date:'medium'}}\n    ",
                         directives: [numberItem]
                     }), 
                     __metadata('design:paramtypes', [])
@@ -89,7 +90,7 @@ System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], fu
                 ParentApp = __decorate([
                     core_1.Component({
                         selector: 'parent-component',
-                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\">NumberItem</a></li>\n      <router-outlet></router-outlet>",
+                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>",
                         directives: [numberList, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
