@@ -17,7 +17,7 @@ import {ParentApp} from './components/CompLoaderSample';
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['Materials']">Angular2 Material</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
-     <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp']">ParentApp</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberList']">ParentApp</a></li>
     </ul>
   </div>
  </nav>   
@@ -35,7 +35,7 @@ import {ParentApp} from './components/CompLoaderSample';
     { path: '/Weather', name: 'Weather', component: Weather },
     { path: '/Materials', name: 'Materials', component: Materials },
     { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku },
-    { path: '/ParentApp', name: 'ParentApp', component: ParentApp }
+    { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp }
 ])
 export class AppRoute {
     navItems;

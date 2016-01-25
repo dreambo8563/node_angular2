@@ -1,5 +1,7 @@
 import {Component, DynamicComponentLoader, ElementRef, OnInit, DoCheck, ChangeDetectionStrategy, ChangeDetectorRef, OnChanges} from 'angular2/core';
 import { Injector} from 'angular2/src/core/di';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+
 
 @Component({
     selector: 'child-component',
@@ -65,9 +67,16 @@ export class numberList  {
 
 @Component({
     selector: 'parent-component',
-    template: `Parent (<child id="child"></child>)(<child #child></child>) <numberList></numberList>`,
-    directives: [numberList]
+    template: `Parent (<child id="child"></child>)(<child #child></child>) <numberList></numberList>
+     <li> <a [routerLink]="['./NumberList']">NumberList</a></li>
+     <li> <a [routerLink]="['./NumberItem']">NumberItem</a></li>
+      <router-outlet></router-outlet>`,
+    directives: [numberList,ROUTER_DIRECTIVES]
 })
+@RouteConfig([
+    { path: '/', name: 'NumberList', component: numberList ,useAsDefault: true},
+     { path: '/numberItem', name: 'NumberItem', component: numberItem }
+])
 export class ParentApp {
 
     // constructor(dcl: DynamicComponentLoader, elementRef: ElementRef) {

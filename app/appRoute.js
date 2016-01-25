@@ -47,7 +47,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                 AppRoute = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\" (click)=\"loopNav($event)\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Materials']\">Angular2 Material</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['DemoFormSku']\">DemoFormSku</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['ParentApp']\">ParentApp</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
+                        template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li class=\"active\" (click)=\"loopNav($event)\"> <a [routerLink]=\"['Search']\">Search</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Materials']\">Angular2 Material</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['DemoFormSku']\">DemoFormSku</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['ParentApp','NumberList']\">ParentApp</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
@@ -60,7 +60,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                         { path: '/Weather', name: 'Weather', component: weather_1.Weather },
                         { path: '/Materials', name: 'Materials', component: Material_1.Materials },
                         { path: '/DemoFormSku', name: 'DemoFormSku', component: Form_1.DemoFormSku },
-                        { path: '/ParentApp', name: 'ParentApp', component: CompLoaderSample_1.ParentApp }
+                        { path: '/ParentApp/...', name: 'ParentApp', component: CompLoaderSample_1.ParentApp }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppRoute);

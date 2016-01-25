@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
+System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, di_1;
+    var core_1, di_1, router_1;
     var ChildComponent, numberItem, numberList, ParentApp;
     return {
         setters:[
@@ -17,6 +17,9 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
             },
             function (di_1_1) {
                 di_1 = di_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             ChildComponent = (function () {
@@ -86,9 +89,13 @@ System.register(['angular2/core', 'angular2/src/core/di'], function(exports_1) {
                 ParentApp = __decorate([
                     core_1.Component({
                         selector: 'parent-component',
-                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>",
-                        directives: [numberList]
-                    }), 
+                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\">NumberItem</a></li>\n      <router-outlet></router-outlet>",
+                        directives: [numberList, router_1.ROUTER_DIRECTIVES]
+                    }),
+                    router_1.RouteConfig([
+                        { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
+                        { path: '/numberItem', name: 'NumberItem', component: numberItem }
+                    ]), 
                     __metadata('design:paramtypes', [core_1.DynamicComponentLoader, di_1.Injector])
                 ], ParentApp);
                 return ParentApp;
