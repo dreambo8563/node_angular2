@@ -11,7 +11,9 @@ AppViewManager,
 Compiler,
 HostViewFactoryRef,
 EventEmitter,
-Output
+Output,
+Injectable,
+Inject
 } from 'angular2/core';
 import { Injector} from 'angular2/src/core/di';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
@@ -22,6 +24,24 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
     template: '<div>good</div>'
 })
 class ChildComponent {
+}
+
+
+
+
+export class InjectClass {
+    a = "inject var";
+    constructor() { }
+}
+
+
+@Injectable()
+export class InjectClassMore {
+    a = "inject var 2";
+    b:string;
+    constructor(ina:InjectClass) { 
+       this.b= ina.a;
+    }
 }
 
 
@@ -62,7 +82,6 @@ export class numberItem implements OnChanges {
     `,
     directives: [numberItem]
 })
-
 export class numberList {
     numbers: Array<number>;
     haha = Date.now();
@@ -82,8 +101,8 @@ export class numberList {
 
 
 @Component({
-  selector: 'zippy',
-  template: `
+    selector: 'zippy',
+    template: `
   <div class="zippy">
     <div (click)="toggle()">Toggle</div>
     <div [hidden]="!visible">
@@ -91,17 +110,17 @@ export class numberList {
     </div>
  </div>`})
 export class Zippy {
-  visible: boolean = true;
-  @Output() open: EventEmitter<any> = new EventEmitter();
-  @Output() close: EventEmitter<any> = new EventEmitter();
-  toggle() {
-    this.visible = !this.visible;
-    if (this.visible) {
-      this.open.emit(null);
-    } else {
-      this.close.emit(null);
+    visible: boolean = true;
+    @Output() open: EventEmitter<any> = new EventEmitter();
+    @Output() close: EventEmitter<any> = new EventEmitter();
+    toggle() {
+        this.visible = !this.visible;
+        if (this.visible) {
+            this.open.emit(null);
+        } else {
+            this.close.emit(null);
+        }
     }
-  }
 }
 
 
@@ -113,7 +132,8 @@ export class Zippy {
      <li> <a [routerLink]="['./NumberItem']"  target="_blank">NumberItem</a></li>
       <router-outlet></router-outlet>
       Parent (<some-component></some-component>) <zippy>hahah houhou</zippy>`,
-    directives: [numberList, ROUTER_DIRECTIVES,Zippy]
+    directives: [numberList, ROUTER_DIRECTIVES, Zippy],
+    providers:[InjectClassMore,InjectClass]
 })
 @RouteConfig([
     { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
@@ -128,12 +148,13 @@ export class ParentApp {
     //     console.log(dcl.loadAsRoot(ChildComponent, '#child', injector));
     // }
     viewRef: ViewRef;
-    constructor(public appViewManager: AppViewManager, compiler: Compiler) {
-        compiler.compileInHost(ChildComponent).then(function(hostProtoViewRef: HostViewFactoryRef ){
+    constructor(public appViewManager: AppViewManager, compiler: Compiler,public ina:InjectClassMore) {
+        var xx =6;
+        compiler.compileInHost(ChildComponent).then(function(hostProtoViewRef: HostViewFactoryRef) {
             var a = hostProtoViewRef;
             this.viewRef = appViewManager.createRootHostView(hostProtoViewRef, 'some-component', null);
-           console.log(this.viewRef);
-           return true;
+            console.log(this.viewRef);
+            return true;
         })
     }
 

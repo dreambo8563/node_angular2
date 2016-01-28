@@ -9,7 +9,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1;
-    var ChildComponent, numberItem, numberList, Zippy, ParentApp;
+    var ChildComponent, InjectClass, InjectClassMore, numberItem, numberList, Zippy, ParentApp;
     return {
         setters:[
             function (core_1_1) {
@@ -31,6 +31,25 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                 ], ChildComponent);
                 return ChildComponent;
             })();
+            InjectClass = (function () {
+                function InjectClass() {
+                    this.a = "inject var";
+                }
+                return InjectClass;
+            })();
+            exports_1("InjectClass", InjectClass);
+            InjectClassMore = (function () {
+                function InjectClassMore(ina) {
+                    this.a = "inject var 2";
+                    this.b = ina.a;
+                }
+                InjectClassMore = __decorate([
+                    core_1.Injectable(), 
+                    __metadata('design:paramtypes', [InjectClass])
+                ], InjectClassMore);
+                return InjectClassMore;
+            })();
+            exports_1("InjectClassMore", InjectClassMore);
             numberItem = (function () {
                 function numberItem(ref) {
                     this.ref = ref;
@@ -110,8 +129,10 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
             })();
             exports_1("Zippy", Zippy);
             ParentApp = (function () {
-                function ParentApp(appViewManager, compiler) {
+                function ParentApp(appViewManager, compiler, ina) {
                     this.appViewManager = appViewManager;
+                    this.ina = ina;
+                    var xx = 6;
                     compiler.compileInHost(ChildComponent).then(function (hostProtoViewRef) {
                         var a = hostProtoViewRef;
                         this.viewRef = appViewManager.createRootHostView(hostProtoViewRef, 'some-component', null);
@@ -123,13 +144,14 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                     core_1.Component({
                         selector: 'parent-component',
                         template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>\n      Parent (<some-component></some-component>) <zippy>hahah houhou</zippy>",
-                        directives: [numberList, router_1.ROUTER_DIRECTIVES, Zippy]
+                        directives: [numberList, router_1.ROUTER_DIRECTIVES, Zippy],
+                        providers: [InjectClassMore, InjectClass]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
                         { path: '/numberItem', name: 'NumberItem', component: numberItem }
                     ]), 
-                    __metadata('design:paramtypes', [core_1.AppViewManager, core_1.Compiler])
+                    __metadata('design:paramtypes', [core_1.AppViewManager, core_1.Compiler, InjectClassMore])
                 ], ParentApp);
                 return ParentApp;
             })();
