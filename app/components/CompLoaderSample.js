@@ -122,8 +122,8 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                 ParentApp = __decorate([
                     core_1.Component({
                         selector: 'parent-component',
-                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>\n      Parent (<some-component></some-component>) <zippy></zippy>",
-                        directives: [numberList, router_1.ROUTER_DIRECTIVES]
+                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>\n      Parent (<some-component></some-component>) <zippy>hahah houhou</zippy>",
+                        directives: [numberList, router_1.ROUTER_DIRECTIVES, Zippy]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },

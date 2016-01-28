@@ -2,7 +2,7 @@ import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Component} from 'angular2/core';
 import {Weather} from './components/weather';
 // import {Search} from './components/Search';
-import {Materials} from './components/Material';
+// import {Materials} from './components/Material';
 import {DemoFormSku} from './components/Form';
 import {ParentApp} from './components/CompLoaderSample';
 
@@ -15,7 +15,6 @@ import {ParentApp} from './components/CompLoaderSample';
   <div class="container" role="navigation">
    <ul class="nav navbar-nav">
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
-     <li (click)="loopNav($event)"> <a [routerLink]="['Materials']">Angular2 Material</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberList']">ParentApp</a></li>
     </ul>
@@ -28,7 +27,6 @@ import {ParentApp} from './components/CompLoaderSample';
 @RouteConfig([
 
     { path: '/Weather', name: 'Weather', component: Weather },
-    { path: '/Materials', name: 'Materials', component: Materials },
     { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku,useAsDefault: true },
     { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp }
 ])

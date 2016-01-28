@@ -112,8 +112,8 @@ export class Zippy {
      <li> <a [routerLink]="['./NumberList']">NumberList</a></li>
      <li> <a [routerLink]="['./NumberItem']"  target="_blank">NumberItem</a></li>
       <router-outlet></router-outlet>
-      Parent (<some-component></some-component>) <zippy></zippy>`,
-    directives: [numberList, ROUTER_DIRECTIVES]
+      Parent (<some-component></some-component>) <zippy>hahah houhou</zippy>`,
+    directives: [numberList, ROUTER_DIRECTIVES,Zippy]
 })
 @RouteConfig([
     { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
