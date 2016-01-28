@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../directives/error'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,11 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, error_1;
-    var ChildComponent, ChildDir, SomeDir, DemoFormSku;
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+    var core_1, common_1;
+    var ChildComponent, ChildDir, SomeDir, InputAttrDirective, DemoFormSku;
     return {
         setters:[
             function (core_1_1) {
@@ -17,11 +20,9 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
             },
             function (common_1_1) {
                 common_1 = common_1_1;
-            },
-            function (error_1_1) {
-                error_1 = error_1_1;
             }],
         execute: function() {
+            // import { ngError} from '../directives/error';
             ChildComponent = (function () {
                 function ChildComponent() {
                     this.a = "hha";
@@ -54,20 +55,35 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
                 SomeDir.prototype.ngAfterContentInit = function () {
                     var a = this.contentChildren;
                 };
+                __decorate([
+                    core_1.ContentChildren(ChildComponent), 
+                    __metadata('design:type', core_1.QueryList)
+                ], SomeDir.prototype, "contentChildren", void 0);
                 SomeDir = __decorate([
                     core_1.Component({
                         selector: 'someDir',
-                        queries: {
-                            contentChildren: new core_1.ContentChildren(ChildComponent)
-                        },
+                        queries: {},
                         template: '<div>in  someDir</div>  ',
                     }), 
                     __metadata('design:paramtypes', [])
                 ], SomeDir);
                 return SomeDir;
             })();
+            InputAttrDirective = (function () {
+                function InputAttrDirective(id) {
+                    console.log(id);
+                }
+                InputAttrDirective = __decorate([
+                    core_1.Directive({ selector: 'input' }),
+                    __param(0, core_1.Attribute('id')), 
+                    __metadata('design:paramtypes', [Object])
+                ], InputAttrDirective);
+                return InputAttrDirective;
+            })();
             DemoFormSku = (function () {
                 function DemoFormSku() {
+                    this.name = 'first name haha';
+                    this.heroImageUrl = "/good/path/img.png";
                 }
                 DemoFormSku.prototype.onSubmit = function (value) {
                     console.log('you submitted value: ', value);
@@ -75,8 +91,8 @@ System.register(['angular2/core', 'angular2/common', '../directives/error'], fun
                 DemoFormSku = __decorate([
                     core_1.Component({
                         selector: 'demo-form-sku',
-                        directives: [common_1.FORM_DIRECTIVES, error_1.ngError, ChildDir, SomeDir, ChildComponent],
-                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n               placeholder=\"SKU\"  \n               ngControl=\"sku\">  \n      \n        <div *ngError =\"'a'\" id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n    <child-dir  #c=\"child\" > houhou</child-dir>{{c.exprotAsVar}}\n   <someDir>\n\n  <child-component></child-component>\n  </someDir>\n  "
+                        directives: [common_1.FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective],
+                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n       \n               ngControl=\"sku\" [value]='name'>  \n      \n        <div id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n    <child-dir  #c=\"child\" > houhou</child-dir>{{c.exprotAsVar}}\n   <someDir>\n\n  <child-component></child-component>\n  </someDir>\n  <img [src] = \"heroImageUrl\">\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DemoFormSku);

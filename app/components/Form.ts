@@ -1,6 +1,6 @@
-import { Component, Directive, ContentChildren, ViewChildren, QueryList} from 'angular2/core';
+import { Component, Directive, ContentChildren, ViewChildren, QueryList, Attribute} from 'angular2/core';
 import { FORM_DIRECTIVES } from 'angular2/common';
-import { ngError} from '../directives/error';
+// import { ngError} from '../directives/error';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { ngError} from '../directives/error';
     template: '<div>{{a}}</div>'
 })
 class ChildComponent {
-     a = "hha";
+    a = "hha";
 }
 
 
@@ -23,13 +23,13 @@ class ChildDir {
 @Component({
     selector: 'someDir',
     queries: {
-        contentChildren: new ContentChildren(ChildComponent)
+
     },
     template: '<div>in  someDir</div>  ',
 
 })
 class SomeDir {
-    contentChildren: QueryList<ChildComponent>;
+    @ContentChildren(ChildComponent) contentChildren : QueryList<ChildComponent>;
     viewChildren: QueryList<ChildComponent>;
 
     ngAfterContentInit() {
@@ -39,11 +39,16 @@ class SomeDir {
 
 }
 
-
+@Directive({ selector: 'input' })
+class InputAttrDirective {
+    constructor( @Attribute('id') id) {
+        console.log(id);
+    }
+}
 
 @Component({
     selector: 'demo-form-sku',
-    directives: [FORM_DIRECTIVES, ngError, ChildDir, SomeDir,ChildComponent],
+    directives: [FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective],
     template: `  
   <div class="ui raised segment">  
     <h2 class="ui header">Demo Form: Sku</h2>  
@@ -55,10 +60,10 @@ class SomeDir {
         <label for="skuInput">SKU</label>  
         <input type="text"  
                id="skuInput"  
-               placeholder="SKU"  
-               ngControl="sku">  
+       
+               ngControl="sku" [value]='name'>  
       
-        <div *ngError ="'a'" id="input" contenteditable>
+        <div id="input" contenteditable>
         </div>
       </div>
 
@@ -70,9 +75,12 @@ class SomeDir {
 
   <child-component></child-component>
   </someDir>
+  <img [src] = "heroImageUrl">
   `
 })
 export class DemoFormSku {
+    name='first name haha';
+    heroImageUrl="/good/path/img.png";
     onSubmit(value: string): void {
         console.log('you submitted value: ', value);
     }

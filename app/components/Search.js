@@ -36,7 +36,7 @@ System.register(['angular2/core', 'rxjs/Rx', 'angular2/http', './Result', '../pi
                 function Search(http) {
                     var _this = this;
                     this.responseData = [];
-                    this.selectedAvatar = null;
+                    this.selectedAvatar = "";
                     // console.log(!!this.responseData.length);
                     this.http = http;
                     this.searchEl = document.querySelector('.searchInput');

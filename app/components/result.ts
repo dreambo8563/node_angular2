@@ -31,6 +31,7 @@ export class Result {
     hoverImg: EventEmitter<string>;
     constructor() {
         this.hoverImg = new EventEmitter();
+        
     }
     imgSelected() {
         this.hoverImg.emit(this.item.owner.avatar_url);

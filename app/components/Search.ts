@@ -48,7 +48,7 @@ export class Search {
     keyups: Rx.Observable<any>;
     requestStream: Rx.Observable<any>;
     responseData = [];
-    selectedAvatar: string = null;
+    selectedAvatar: string = "";
 
     constructor(http: Http) {
         // console.log(!!this.responseData.length);

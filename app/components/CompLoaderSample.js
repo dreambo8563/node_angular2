@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,12 @@ System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, di_1, router_1;
-    var ChildComponent, numberItem, numberList, ParentApp;
+    var core_1, router_1;
+    var ChildComponent, numberItem, numberList, Zippy, ParentApp;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (di_1_1) {
-                di_1 = di_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -80,24 +77,59 @@ System.register(['angular2/core', 'angular2/src/core/di', 'angular2/router'], fu
                 return numberList;
             })();
             exports_1("numberList", numberList);
+            Zippy = (function () {
+                function Zippy() {
+                    this.visible = true;
+                    this.open = new core_1.EventEmitter();
+                    this.close = new core_1.EventEmitter();
+                }
+                Zippy.prototype.toggle = function () {
+                    this.visible = !this.visible;
+                    if (this.visible) {
+                        this.open.emit(null);
+                    }
+                    else {
+                        this.close.emit(null);
+                    }
+                };
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], Zippy.prototype, "open", void 0);
+                __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], Zippy.prototype, "close", void 0);
+                Zippy = __decorate([
+                    core_1.Component({
+                        selector: 'zippy',
+                        template: "\n  <div class=\"zippy\">\n    <div (click)=\"toggle()\">Toggle</div>\n    <div [hidden]=\"!visible\">\n      <ng-content></ng-content>\n    </div>\n </div>" }), 
+                    __metadata('design:paramtypes', [])
+                ], Zippy);
+                return Zippy;
+            })();
+            exports_1("Zippy", Zippy);
             ParentApp = (function () {
-                // constructor(dcl: DynamicComponentLoader, elementRef: ElementRef) {
-                //     dcl.loadIntoLocation(ChildComponent, elementRef, 'child');
-                // }
-                function ParentApp(dcl, injector) {
-                    console.log(dcl.loadAsRoot(ChildComponent, '#child', injector));
+                function ParentApp(appViewManager, compiler) {
+                    this.appViewManager = appViewManager;
+                    compiler.compileInHost(ChildComponent).then(function (hostProtoViewRef) {
+                        var a = hostProtoViewRef;
+                        this.viewRef = appViewManager.createRootHostView(hostProtoViewRef, 'some-component', null);
+                        console.log(this.viewRef);
+                        return true;
+                    });
                 }
                 ParentApp = __decorate([
                     core_1.Component({
                         selector: 'parent-component',
-                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>",
+                        template: "Parent (<child id=\"child\"></child>)(<child #child></child>) <numberList></numberList>\n     <li> <a [routerLink]=\"['./NumberList']\">NumberList</a></li>\n     <li> <a [routerLink]=\"['./NumberItem']\"  target=\"_blank\">NumberItem</a></li>\n      <router-outlet></router-outlet>\n      Parent (<some-component></some-component>) <zippy></zippy>",
                         directives: [numberList, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
                         { path: '/numberItem', name: 'NumberItem', component: numberItem }
                     ]), 
-                    __metadata('design:paramtypes', [core_1.DynamicComponentLoader, di_1.Injector])
+                    __metadata('design:paramtypes', [core_1.AppViewManager, core_1.Compiler])
                 ], ParentApp);
                 return ParentApp;
             })();
