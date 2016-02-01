@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angular2/router'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,18 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, di_1, http_1, router_1;
     var ChildComponent, InjectClass, InjectClassMore, numberItem, numberList, Zippy, ParentApp;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (di_1_1) {
+                di_1 = di_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -75,8 +81,12 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
             })();
             exports_1("numberItem", numberItem);
             numberList = (function () {
-                function numberList() {
+                function numberList(ina, _inject) {
+                    this.ina = ina;
                     this.haha = Date.now();
+                    ina.a = "change a in child com";
+                    console.log("from NUmberlIst", ina);
+                    console.log("from parent", _inject.parent.get(InjectClassMore));
                     this.numbers = [1, 2, 3, 4];
                 }
                 // ngOnChanges() {
@@ -89,9 +99,10 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                     core_1.Component({
                         selector: 'numberList',
                         template: "\n    <div *ngFor = \"#number of numbers\" >\n<numberItem [number]=\"number\"></numberItem>\n    </div>\n    <input #input />\n    <button (click)=\"addNumbers(input.value)\">addNumbers</button>\n    <div>{{moreNumber}}</div>{{haha | date:'medium'}}\n    ",
-                        directives: [numberItem]
+                        directives: [numberItem],
+                        providers: [InjectClassMore]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [InjectClassMore, di_1.Injector])
                 ], numberList);
                 return numberList;
             })();
@@ -133,6 +144,9 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1) {
                     this.appViewManager = appViewManager;
                     this.ina = ina;
                     var xx = 6;
+                    var firstHeaders = new http_1.Headers(); // Currently empty
+                    firstHeaders.append('Content-Type', 'image/jpeg');
+                    var m = firstHeaders.toJSON(); //'Angular'
                     compiler.compileInHost(ChildComponent).then(function (hostProtoViewRef) {
                         var a = hostProtoViewRef;
                         this.viewRef = appViewManager.createRootHostView(hostProtoViewRef, 'some-component', null);

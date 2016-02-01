@@ -1,5 +1,6 @@
 import {Component, EventEmitter, AfterViewChecked} from 'angular2/core';
 import {NgFor} from "angular2/common";
+import {Router} from 'angular2/router';
 import {HTTP_PROVIDERS, Http, Response, Headers, RequestOptions} from 'angular2/http';
 
 
@@ -60,7 +61,7 @@ export class Weather implements AfterViewChecked {
     hourly_hum: string[] = [];
     hourly_svg: Object[] = [];
 
-    constructor(http: Http) {
+    constructor(http: Http, _route: Router) {
         this.firstHeaders = new Headers();
         this.firstHeaders.append('apikey', '1b3e35e5bdb4cced72fae8c2244668a0');
         this.opts = new RequestOptions();

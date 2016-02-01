@@ -16,6 +16,7 @@ Injectable,
 Inject
 } from 'angular2/core';
 import { Injector} from 'angular2/src/core/di';
+import {Headers} from "angular2/http";
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 
@@ -38,9 +39,9 @@ export class InjectClass {
 @Injectable()
 export class InjectClassMore {
     a = "inject var 2";
-    b:string;
-    constructor(ina:InjectClass) { 
-       this.b= ina.a;
+    b: string;
+    constructor(ina: InjectClass) {
+        this.b = ina.a;
     }
 }
 
@@ -80,12 +81,17 @@ export class numberItem implements OnChanges {
     <button (click)="addNumbers(input.value)">addNumbers</button>
     <div>{{moreNumber}}</div>{{haha | date:'medium'}}
     `,
-    directives: [numberItem]
+    directives: [numberItem],
+    providers: [InjectClassMore]
 })
 export class numberList {
     numbers: Array<number>;
     haha = Date.now();
-    constructor() {
+    constructor(public ina: InjectClassMore, _inject: Injector) {
+        ina.a = "change a in child com";
+        console.log("from NUmberlIst", ina);
+        console.log("from parent", _inject.parent.get(InjectClassMore));
+
         this.numbers = [1, 2, 3, 4];
     }
 
@@ -133,7 +139,7 @@ export class Zippy {
       <router-outlet></router-outlet>
       Parent (<some-component></some-component>) <zippy>hahah houhou</zippy>`,
     directives: [numberList, ROUTER_DIRECTIVES, Zippy],
-    providers:[InjectClassMore,InjectClass]
+    providers: [InjectClassMore, InjectClass]
 })
 @RouteConfig([
     { path: '/', name: 'NumberList', component: numberList, useAsDefault: true },
@@ -148,8 +154,13 @@ export class ParentApp {
     //     console.log(dcl.loadAsRoot(ChildComponent, '#child', injector));
     // }
     viewRef: ViewRef;
-    constructor(public appViewManager: AppViewManager, compiler: Compiler,public ina:InjectClassMore) {
-        var xx =6;
+    constructor(public appViewManager: AppViewManager, compiler: Compiler, public ina: InjectClassMore) {
+        var xx = 6;
+
+        var firstHeaders = new Headers();  // Currently empty
+        firstHeaders.append('Content-Type', 'image/jpeg');
+        var m =firstHeaders.toJSON(); //'Angular'
+        
         compiler.compileInHost(ChildComponent).then(function(hostProtoViewRef: HostViewFactoryRef) {
             var a = hostProtoViewRef;
             this.viewRef = appViewManager.createRootHostView(hostProtoViewRef, 'some-component', null);
@@ -163,5 +174,9 @@ export class ParentApp {
     //     dcl.loadNextToLocation(ChildComponent, elementRef);
     // }
 }
+
+
+
+
 
 

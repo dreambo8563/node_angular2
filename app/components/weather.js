@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,19 +8,22 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1;
+    var core_1, router_1, http_1;
     var Weather;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
             function (http_1_1) {
                 http_1 = http_1_1;
             }],
         execute: function() {
             Weather = (function () {
-                function Weather(http) {
+                function Weather(http, _route) {
                     var _this = this;
                     this.hourly_time = [];
                     this.hourly_tmp = [];
@@ -106,7 +109,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1) {
                         providers: [http_1.HTTP_PROVIDERS],
                         template: "\n    <div  *ngIf=\"weatherData\">\n       <div class=\"row\">\n            <dir class=\"col-xs-3\">\n                <h3> \u4ECA\u65E5\u5929\u6C14</h3>\n            </dir>\n            <div class=\"col-xs-8 col-xs-offset-1\">\n                <div class=\"row\">\n                    <div class=\"col-xs-4\">\n                        \u5F53\u524D\u6E29\u5EA6(\u6444\u6C0F\u5EA6):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.tmp}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u6E7F\u5EA6(%):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.hum}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u5929\u6C14\u72B6\u51B5:\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.cond.txt}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u964D\u96E8\u91CF(mm):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.pcpn}}\n                    </div>\n                </div>\n            </div>\n        </div>\n   <dir class=\"col-xs-3\">\n            <h3> \u4ECA\u65E5\u9884\u62A5</h3>\n   </dir>\n <svg class=\"col-xs-8\" id=\"visualisation_today\" width=\"1000\" style=\"padding-left: 53px;\" height=\"500\"></svg>\n    \n    \n </div>\n    "
                     }), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], Weather);
                 return Weather;
             })();

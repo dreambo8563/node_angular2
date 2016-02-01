@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular2": "^2.0.0-beta.1",
+    "angular2": "^2.0.0-beta.2",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.13",
     "ramda": "^0.19.0",

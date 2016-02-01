@@ -1,4 +1,4 @@
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, AuxRoute} from 'angular2/router';
 import {Component} from 'angular2/core';
 import {Weather} from './components/weather';
 // import {Search} from './components/Search';
@@ -16,19 +16,22 @@ import {ParentApp} from './components/CompLoaderSample';
    <ul class="nav navbar-nav">
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
-     <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberList']">ParentApp</a></li>
+      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberItem']">Double</a></li>
+     <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp',['Alert']]">ParentApp</a></li>
     </ul>
   </div>
  </nav>   
  <router-outlet></router-outlet>
+  <router-outlet name="alert"></router-outlet>
   `,
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
 
     { path: '/Weather', name: 'Weather', component: Weather },
-    { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku,useAsDefault: true },
-    { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp }
+    { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku, useAsDefault: true },
+    { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp},
+    {aux: '/alert',component:Weather, name:'Alert'}
 ])
 export class AppRoute {
     navItems;
