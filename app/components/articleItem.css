@@ -1,0 +1,255 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-moz-scrollbar {
+    display: none;
+}
+
+.cardRoot {
+    /*height: 800px;
+    width: 400px;
+    margin-left: 500px;*/
+    position: relative;
+    border-style: solid;
+    border-color: #F9B24F;
+}
+
+header {
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+header .title {
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    color: white;
+    font-size: 40px;
+    line-height: 40px;
+    transition: .3s all ease;
+    z-index: 999;
+    font-family: Roboto;
+    font-weight: 300;
+    text-transform: capitalize;
+    right: 10%;
+    word-wrap: break-word;
+    bottom: 10%;
+    overflow: hidden;
+}
+
+header .header-bg {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #ec4590;
+    transition: .3s all ease;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+header.active .title {
+    font-size: 20px;
+    line-height: 30px;
+    top: 4%;
+    text-shadow: 10px 5px 2px #0f0c0f;
+    transition: .3s all ease .15s;
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+header.active .header-bg {
+    height: 20%;
+    background: #e11873;
+    transition: .3s all ease .15s;
+}
+
+header.active .cta-ctr {
+    top: calc(20% - 30px);
+    bottom: auto;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: .5s all ease .2s;
+}
+
+header.active .cta .fa {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    transition: .5s all ease .2s;
+}
+
+header .cta-ctr {
+    position: absolute;
+    right: 10%;
+    top: calc(100% - 30px);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    transition: .3s all ease;
+}
+
+header .cta {
+    width: 60px;
+    height: 60px;
+    background: #F9B24F;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s all ease;
+    pointer-events: auto;
+    position: relative;
+    box-shadow: 0 8px 12px 1px rgba(0, 0, 0, 0.15);
+}
+
+header .cta .fa {
+    border-radius: 50%;
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    right: 20px;
+    bottom: 20px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    transition: .3s all ease;
+}
+
+header .cta:hover {
+    background-color: #fabd68;
+}
+
+.content-ctr {
+    width: 100%;
+    height: 100%;
+    background: white;
+    overflow: scroll;
+    position: relative;
+}
+
+.content-ctr.active .header-content-ctr {
+    height: 0%;
+    transition: .3s height ease .45s;
+}
+
+.content-ctr.active .header-content-ctr .title {
+    transition: .3s all ease;
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -moz-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    -o-transform: translateY(-20px);
+    transform: translateY(-20px);
+}
+
+.content-ctr.active .main-content-ctr {
+    height: 100%;
+    overflow: scroll;
+}
+
+.content-ctr.active .main-content-ctr .par {
+    transition: .3s all ease .7s;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.content-ctr .title {
+    font-family: Roboto;
+    margin-bottom: 30px;
+    font-size: 34px;
+    color: #E61875;
+    transition: .3s all ease;
+}
+
+.content-ctr .par {
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 300;
+    color: #777;
+}
+
+.content-ctr .header-content-ctr {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    transition: .3s height ease;
+}
+
+.content-ctr .header-content-ctr .title {
+    transition: .3s all ease .15s;
+}
+
+.content-ctr .header-content {
+    position: absolute;
+    right: 0;
+    bottom: 110px;
+    left: 80px;
+}
+
+.content-ctr .main-content-ctr {
+    position: relative;
+    min-height: 0%;
+    transition: .3s height ease;
+    overflow: hidden;
+}
+
+.content-ctr .main-content-ctr .title,
+.content-ctr .main-content-ctr .par {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -moz-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    -o-transform: translateY(20px);
+    transform: translateY(20px);
+}
+
+.content-ctr .main-content {
+    position: relative;
+    top: 35%;
+    /* right: 10%; */
+    left: 0;
+    margin-right: 10%;
+    margin-left: 10%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.read-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 4px 0;
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    background-image: linear-gradient(to bottom, transparent, #fabd68);
+    transition: .8s all ease;
+}
+
+.read-more a.button {
+    color: #E61875;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    font-size: 24px;
+}

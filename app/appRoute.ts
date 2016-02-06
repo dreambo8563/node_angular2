@@ -5,6 +5,7 @@ import {Weather} from './components/weather';
 // import {Materials} from './components/Material';
 import {DemoFormSku} from './components/Form';
 import {ParentApp} from './components/CompLoaderSample';
+import {ArticleItem} from './components/articleItem';
 
 
 
@@ -18,6 +19,7 @@ import {ParentApp} from './components/CompLoaderSample';
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
       <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberItem']">Double</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp',['Alert']]">ParentApp</a></li>
+          <li (click)="loopNav($event)"> <a [routerLink]="['ArticleItem']">ArticleItem</a></li>
     </ul>
   </div>
  </nav>   
@@ -31,6 +33,7 @@ import {ParentApp} from './components/CompLoaderSample';
     { path: '/Weather', name: 'Weather', component: Weather },
     { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku, useAsDefault: true },
     { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp},
+        { path: '/ArticleItem', name: 'ArticleItem', component: ArticleItem},
     {aux: '/alert',component:Weather, name:'Alert'}
 ])
 export class AppRoute {

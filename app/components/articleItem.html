@@ -1,0 +1,21 @@
+<div class="cardRoot" [style.width]="_width" [style.height]="_height">
+    <div #content class='content-ctr'>
+        <div class='main-content-ctr'>
+            <div class='main-content'>
+                <div class='par'>{{_article.content}} </div>
+                <p class="read-more"><a href="#" class="button">Read More</a></p>
+            </div>
+        </div>
+    </div>
+    <header #header>
+        <div class='header-bg'></div>
+        <div class='header-content'>
+            <div class='title'>{{_article.title}}</div>
+        </div>
+        <div class='cta-ctr'>
+            <div class='cta' (click)="toggle()">
+                <i class="fa fa-arrow-up"></i>
+            </div>
+        </div>
+    </header>
+</div>
