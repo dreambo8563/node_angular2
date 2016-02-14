@@ -29,7 +29,6 @@ import {ArticleItem} from './components/articleItem';
     directives: [ROUTER_DIRECTIVES]
 })
 @RouteConfig([
-
     { path: '/Weather', name: 'Weather', component: Weather },
     { path: '/DemoFormSku', name: 'DemoFormSku', component: DemoFormSku, useAsDefault: true },
     { path: '/ParentApp/...', name: 'ParentApp', component: ParentApp},

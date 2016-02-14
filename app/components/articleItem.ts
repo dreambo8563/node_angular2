@@ -17,18 +17,18 @@ export class ArticleItem implements OnInit, OnDestroy {
     _article = {
         title: `This is a title`,
         content: `This is the main content. In this area,
-                    the header will be hidden. Click the button to jump on top.test test test test test test test test testtest test test test test
-                    test test test test test test test test test test test test test test test test test test`};
+                    the header will be hidden. `};
     _height: string = '400px';
     _width: string = '400px';
-    
+
     constructor( @Optional() @Self() @Attribute("height") height: string, @Optional() @Self() @Attribute("width") width: string) {
         this._height = height || this._height;
         this._width = width || this._width;
-        this._article = this.article || this._article;
     }
 
-    ngOnInit() { console.log('ngOnInit'); }
+    ngOnInit() {
+        this._article = this.article || this._article;
+    }
     ngOnDestroy() { console.log('ngOnDestroy'); }
 
     toggle() {

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', './articleItem'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
     var __param = (this && this.__param) || function (paramIndex, decorator) {
         return function (target, key) { decorator(target, key, paramIndex); }
     };
-    var core_1, common_1;
+    var core_1, common_1, articleItem_1;
     var ChildComponent, ChildDir, SomeDir, InputAttrDirective, DemoFormSku;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (articleItem_1_1) {
+                articleItem_1 = articleItem_1_1;
             }],
         execute: function() {
             // import { ngError} from '../directives/error';
@@ -84,6 +87,7 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                 function DemoFormSku() {
                     this.name = 'first name haha';
                     this.heroImageUrl = "/good/path/img.png";
+                    this.article = { title: "new title", content: "new contetn" };
                 }
                 DemoFormSku.prototype.onSubmit = function (value) {
                     console.log('you submitted value: ', value);
@@ -91,8 +95,8 @@ System.register(['angular2/core', 'angular2/common'], function(exports_1) {
                 DemoFormSku = __decorate([
                     core_1.Component({
                         selector: 'demo-form-sku',
-                        directives: [common_1.FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective],
-                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n       \n               ngControl=\"sku\" [value]='name'>  \n      \n        <div id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n    <child-dir  #c=\"child\" > houhou</child-dir>{{c.exprotAsVar}}\n   <someDir>\n\n  <child-component></child-component>\n  </someDir>\n  <img [src] = \"heroImageUrl\">\n  "
+                        directives: [common_1.FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective, articleItem_1.ArticleItem],
+                        template: "  \n  <div class=\"ui raised segment\">  \n    <h2 class=\"ui header\">Demo Form: Sku</h2>  \n    <form #f=\"ngForm\"  \n          (ngSubmit)=\"onSubmit(f.value)\"  \n          class=\"ui form\">\n\n      <div class=\"field\">  \n        <label for=\"skuInput\">SKU</label>  \n        <input type=\"text\"  \n               id=\"skuInput\"  \n       \n               ngControl=\"sku\" [value]='name'>  \n      \n        <div id=\"input\" contenteditable>\n        </div>\n      </div>\n\n      <button type=\"submit\" class=\"ui button\">Submit</button>  \n    </form>  \n  </div>  \n    <child-dir  #c=\"child\" > houhou</child-dir>{{c.exprotAsVar}}\n   <someDir>\n\n  <child-component></child-component>\n  </someDir>\n  <img [src] = \"heroImageUrl\">\n  <animate height=\"600px\" width=\"800px\" [article]=\"article\"></animate>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DemoFormSku);

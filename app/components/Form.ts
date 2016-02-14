@@ -1,5 +1,6 @@
 import { Component, Directive, ContentChildren, ViewChildren, QueryList, Attribute} from 'angular2/core';
 import { FORM_DIRECTIVES } from 'angular2/common';
+import {ArticleItem} from './articleItem'
 // import { ngError} from '../directives/error';
 
 
@@ -48,7 +49,7 @@ class InputAttrDirective {
 
 @Component({
     selector: 'demo-form-sku',
-    directives: [FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective],
+    directives: [FORM_DIRECTIVES, ChildDir, SomeDir, ChildComponent, InputAttrDirective,ArticleItem],
     template: `  
   <div class="ui raised segment">  
     <h2 class="ui header">Demo Form: Sku</h2>  
@@ -76,11 +77,14 @@ class InputAttrDirective {
   <child-component></child-component>
   </someDir>
   <img [src] = "heroImageUrl">
+  <animate height="600px" width="800px" [article]="article"></animate>
   `
 })
 export class DemoFormSku {
     name='first name haha';
     heroImageUrl="/good/path/img.png";
+    
+    article = {title:"new title", content:"new contetn"};
     onSubmit(value: string): void {
         console.log('you submitted value: ', value);
     }

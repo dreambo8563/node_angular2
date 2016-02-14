@@ -23,14 +23,15 @@ System.register(['angular2/core'], function(exports_1) {
                 function ArticleItem(height, width) {
                     this._article = {
                         title: "This is a title",
-                        content: "This is the main content. In this area,\n                    the header will be hidden. Click the button to jump on top.test test test test test test test test testtest test test test test\n                    test test test test test test test test test test test test test test test test test test" };
+                        content: "This is the main content. In this area,\n                    the header will be hidden. " };
                     this._height = '400px';
                     this._width = '400px';
                     this._height = height || this._height;
                     this._width = width || this._width;
-                    this._article = this.article || this._article;
                 }
-                ArticleItem.prototype.ngOnInit = function () { console.log('ngOnInit'); };
+                ArticleItem.prototype.ngOnInit = function () {
+                    this._article = this.article || this._article;
+                };
                 ArticleItem.prototype.ngOnDestroy = function () { console.log('ngOnDestroy'); };
                 ArticleItem.prototype.toggle = function () {
                     this.header.nativeElement.classList.toggle("active");
