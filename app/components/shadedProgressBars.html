@@ -1,0 +1,14 @@
+<div class="progress-factor flexy-item">
+    <div class="progress-bar">
+        <div class="bar has-rotation has-colors {{_options?.color}} {{_options?.ruler}}" [ngClass]="{rotate:_options.rotate, move:_options.move}" role="progressbar" 
+       [attr.aria-valuenow]="_value" aria-valuemin="0" aria-valuemax="100" [style.width]="_width">
+            <div class="tooltip {{_options?.toolTipColor}}"  [ngClass]="{'heat-gradient-tooltip':_options.ruler ==='heat-gradient'}"></div>
+            <div class="bar-face face-position roof percentage"></div>
+            <div class="bar-face face-position back percentage"></div>
+            <div class="bar-face face-position floor percentage volume-lights"></div>
+            <div class="bar-face face-position left"></div>
+            <div class="bar-face face-position right"></div>
+            <div class="bar-face face-position front percentage volume-lights shine"></div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'ng2-material/all', '../directives/rotate', '../directives/shake-opacity'], function(exports_1) {
+System.register(['angular2/core', 'ng2-material/all', '../directives/rotate', '../directives/shake-opacity'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +46,7 @@ System.register(['angular2/core', 'ng2-material/all', '../directives/rotate', '.
                     __metadata('design:paramtypes', [])
                 ], Materials);
                 return Materials;
-            })();
+            }());
             exports_1("Materials", Materials);
         }
     }

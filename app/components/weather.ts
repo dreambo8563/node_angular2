@@ -2,11 +2,13 @@ import {Component, EventEmitter, AfterViewChecked} from 'angular2/core';
 import {NgFor} from "angular2/common";
 import {Router} from 'angular2/router';
 import {HTTP_PROVIDERS, Http, Response, Headers, RequestOptions} from 'angular2/http';
+import {ShadedProgressBars} from './shadedProgressBars'
 
 
 @Component({
     selector: 'weather',
     providers: [HTTP_PROVIDERS],
+    directives: [ShadedProgressBars],
     template: `
     <div  *ngIf="weatherData">
        <div class="row">
@@ -49,6 +51,8 @@ import {HTTP_PROVIDERS, Http, Response, Headers, RequestOptions} from 'angular2/
     
     
  </div>
+ 
+ <shadedProgressBars width="600px" value="35" [options]="options"></shadedProgressBars>
     `
 })
 export class Weather implements AfterViewChecked {
@@ -60,6 +64,7 @@ export class Weather implements AfterViewChecked {
     hourly_pres: string[] = [];
     hourly_hum: string[] = [];
     hourly_svg: Object[] = [];
+    options = { color: "dark", move: false, rotate: false, ruler: "ruler-2" };
 
     constructor(http: Http, _route: Router) {
         this.firstHeaders = new Headers();
@@ -131,9 +136,9 @@ export class Weather implements AfterViewChecked {
 
             xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([Math.min(...this.hourly_time), Math.max(...this.hourly_time)]),
             yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([Math.min(...this.hourly_tmp), Math.max(...this.hourly_tmp)]),
-            
 
-            
+
+
             xAxis = d3.svg.axis()
                 .scale(xScale),
 
@@ -145,7 +150,7 @@ export class Weather implements AfterViewChecked {
         vis.append("svg:g")
             .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
             .call(xAxis);
-            console.log();
+        console.log();
         vis.append("svg:g")
             .call(yAxis);
 

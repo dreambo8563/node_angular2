@@ -17,7 +17,7 @@ import {ArticleItem} from './components/articleItem';
    <ul class="nav navbar-nav">
      <li (click)="loopNav($event)"> <a [routerLink]="['Weather']">Weather</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['DemoFormSku']">DemoFormSku</a></li>
-      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberItem']">Double</a></li>
+      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp','NumberList']">Double</a></li>
      <li (click)="loopNav($event)"> <a [routerLink]="['ParentApp',['Alert']]">ParentApp</a></li>
           <li (click)="loopNav($event)"> <a [routerLink]="['ArticleItem']">ArticleItem</a></li>
     </ul>

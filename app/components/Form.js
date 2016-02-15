@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/common', './articleItem'], function(exports_1) {
+System.register(['angular2/core', 'angular2/common', './articleItem'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +40,7 @@ System.register(['angular2/core', 'angular2/common', './articleItem'], function(
                     __metadata('design:paramtypes', [])
                 ], ChildComponent);
                 return ChildComponent;
-            })();
+            }());
             ChildDir = (function () {
                 function ChildDir() {
                     this.exprotAsVar = "exportAs Text";
@@ -51,7 +53,7 @@ System.register(['angular2/core', 'angular2/common', './articleItem'], function(
                     __metadata('design:paramtypes', [])
                 ], ChildDir);
                 return ChildDir;
-            })();
+            }());
             SomeDir = (function () {
                 function SomeDir() {
                 }
@@ -71,7 +73,7 @@ System.register(['angular2/core', 'angular2/common', './articleItem'], function(
                     __metadata('design:paramtypes', [])
                 ], SomeDir);
                 return SomeDir;
-            })();
+            }());
             InputAttrDirective = (function () {
                 function InputAttrDirective(id) {
                     console.log(id);
@@ -82,7 +84,7 @@ System.register(['angular2/core', 'angular2/common', './articleItem'], function(
                     __metadata('design:paramtypes', [Object])
                 ], InputAttrDirective);
                 return InputAttrDirective;
-            })();
+            }());
             DemoFormSku = (function () {
                 function DemoFormSku() {
                     this.name = 'first name haha';
@@ -101,7 +103,7 @@ System.register(['angular2/core', 'angular2/common', './articleItem'], function(
                     __metadata('design:paramtypes', [])
                 ], DemoFormSku);
                 return DemoFormSku;
-            })();
+            }());
             exports_1("DemoFormSku", DemoFormSku);
         }
     }

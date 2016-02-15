@@ -1,1 +1,1 @@
-{"version":3,"file":"searchServices.js","sourceRoot":"","sources":["searchServices.ts"],"names":["searchService","searchService.constructor"],"mappings":";;;;;;;;;;;;;;;;;;YAGA;gBAEIA,uBAAYA,QAAqBA;gBACjCC,CAACA;gBAHLD;oBAACA,iBAAUA,EAAEA;;kCAIZA;gBAADA,oBAACA;YAADA,CAACA,AAJD,IAIC;YAJD,yCAIC,CAAA"}
+{"version":3,"file":"searchServices.js","sourceRoot":"","sources":["searchServices.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;YAIA;gBACI,uBAAY,QAAqB;gBACjC,CAAC;gBAHL;oBAAC,iBAAU,EAAE;;iCAAA;gBAIb,oBAAC;YAAD,CAAC,AAHD,IAGC;YAHD,yCAGC,CAAA"}

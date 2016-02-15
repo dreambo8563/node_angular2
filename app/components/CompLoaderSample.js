@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angular2/router'], function(exports_1) {
+System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angular2/router'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -36,13 +38,13 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [])
                 ], ChildComponent);
                 return ChildComponent;
-            })();
+            }());
             InjectClass = (function () {
                 function InjectClass() {
                     this.a = "inject var";
                 }
                 return InjectClass;
-            })();
+            }());
             exports_1("InjectClass", InjectClass);
             InjectClassMore = (function () {
                 function InjectClassMore(ina) {
@@ -54,7 +56,7 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [InjectClass])
                 ], InjectClassMore);
                 return InjectClassMore;
-            })();
+            }());
             exports_1("InjectClassMore", InjectClassMore);
             numberItem = (function () {
                 function numberItem(ref) {
@@ -78,7 +80,7 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
                 ], numberItem);
                 return numberItem;
-            })();
+            }());
             exports_1("numberItem", numberItem);
             numberList = (function () {
                 function numberList(ina, _inject) {
@@ -105,7 +107,7 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [InjectClassMore, di_1.Injector])
                 ], numberList);
                 return numberList;
-            })();
+            }());
             exports_1("numberList", numberList);
             Zippy = (function () {
                 function Zippy() {
@@ -137,7 +139,7 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [])
                 ], Zippy);
                 return Zippy;
-            })();
+            }());
             exports_1("Zippy", Zippy);
             ParentApp = (function () {
                 function ParentApp(appViewManager, compiler, ina) {
@@ -168,7 +170,7 @@ System.register(['angular2/core', 'angular2/src/core/di', "angular2/http", 'angu
                     __metadata('design:paramtypes', [core_1.AppViewManager, core_1.Compiler, InjectClassMore])
                 ], ParentApp);
                 return ParentApp;
-            })();
+            }());
             exports_1("ParentApp", ParentApp);
         }
     }
