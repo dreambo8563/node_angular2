@@ -2,13 +2,14 @@ import {Component, EventEmitter, AfterViewChecked} from 'angular2/core';
 import {NgFor} from "angular2/common";
 import {Router} from 'angular2/router';
 import {HTTP_PROVIDERS, Http, Response, Headers, RequestOptions} from 'angular2/http';
-import {ShadedProgressBars} from './shadedProgressBars'
+import {ShadedProgressBars} from './shadedProgressBars';
+import {InputEffects} from './inputEffects'
 
 
 @Component({
     selector: 'weather',
     providers: [HTTP_PROVIDERS],
-    directives: [ShadedProgressBars],
+    directives: [ShadedProgressBars, InputEffects],
     template: `
     <div  *ngIf="weatherData">
        <div class="row">
@@ -53,6 +54,7 @@ import {ShadedProgressBars} from './shadedProgressBars'
  </div>
  
  <shadedProgressBars width="600px" value="35" [options]="options"></shadedProgressBars>
+ <inputEffects height="180%" width="300px" id="coolInput" [title]="_title" [inputStyle]="_inputStyle"></inputEffects>
     `
 })
 export class Weather implements AfterViewChecked {
@@ -65,35 +67,37 @@ export class Weather implements AfterViewChecked {
     hourly_hum: string[] = [];
     hourly_svg: Object[] = [];
     options = { color: "dark", move: false, rotate: false, ruler: "ruler-2" };
+    _title = "Password";
+    _inputStyle="shoko";
 
     constructor(http: Http, _route: Router) {
         this.firstHeaders = new Headers();
         this.firstHeaders.append('apikey', '1b3e35e5bdb4cced72fae8c2244668a0');
         this.opts = new RequestOptions();
         this.opts.headers = this.firstHeaders;
-        http.get('http://apis.baidu.com/heweather/weather/free?city=beijing', this.opts).subscribe(res=> {
-            this.weatherData = res.json();
-            this.weatherData = this.weatherData['HeWeather data service 3.0'][0];
-            // console.log(this.weatherData);
+        // http.get('http://apis.baidu.com/heweather/weather/free?city=beijing', this.opts).subscribe(res=> {
+        //     this.weatherData = res.json();
+        //     this.weatherData = this.weatherData['HeWeather data service 3.0'][0];
+        //     // console.log(this.weatherData);
 
 
-            for (let v of this.weatherData.hourly_forecast) {
-                let time = v.date.split(" ")[1];
-                time = Number(time.split(":")[0]);
-                this.hourly_time.push(time);
+        //     for (let v of this.weatherData.hourly_forecast) {
+        //         let time = v.date.split(" ")[1];
+        //         time = Number(time.split(":")[0]);
+        //         this.hourly_time.push(time);
 
 
-                let obj = new Object();
-                obj = { time: parseInt(time), tmp: parseInt(v.tmp) }
-                this.hourly_svg.push(obj);
+        //         let obj = new Object();
+        //         obj = { time: parseInt(time), tmp: parseInt(v.tmp) }
+        //         this.hourly_svg.push(obj);
 
-                this.hourly_tmp.push(parseInt(v.tmp));
+        //         this.hourly_tmp.push(parseInt(v.tmp));
 
-            }
+        //     }
             
-            // console.log(this.hourly_time, this.hourly_tmp);
+        //     // console.log(this.hourly_time, this.hourly_tmp);
             
-        })
+        // })
 
     }
 

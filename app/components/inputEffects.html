@@ -1,0 +1,35 @@
+<span class="input input--{{_inputStyle}}" [style.fontSize]="_height" [style.max-width]="_width" [ngSwitch]="_inputStyle">
+<input class="input__field input__field--{{_inputStyle}}" type="text" [attr.id]="_id" />
+<label class="input__label input__label--{{_inputStyle}}" [attr.for]="_id" [ngSwitch]="_inputStyle"  [attr.data-content]="_title">
+  <i *ngIf="_inputStyle=='hideo'" class="fa fa-fw fa-lock icon icon--hideo"></i>
+  <i *ngIf="_inputStyle=='sae'" class="fa fa-fw fa-pencil icon icon--sae"></i>
+  <i *ngIf="_inputStyle=='fumi'" class="fa fa-fw fa-suitcase icon icon--fumi"></i>
+  <i *ngIf="_inputStyle=='kohana'" class="fa fa-fw fa-phone icon icon--kohana"></i>
+     <template ngSwitchWhen="madoka">
+            <svg class="graphic graphic--madoka" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+			 				<path d="m0,0l404,0l0,77l-404,0l0,-77z"/>
+						</svg>
+        </template>
+    <span class="input__label-content input__label-content--{{_inputStyle}}" [attr.data-content]="_title">{{_title}}</span>
+</label>
+<template ngSwitchWhen="nao">
+    <svg class="graphic graphic--nao" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"
+        />
+    </svg>
+</template>
+<template ngSwitchWhen="shoko">
+    <svg class="graphic graphic--shoko" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0"
+        />
+        <path d="M0,2.5c0,0,298.666,0,399.333,0C448.336,2.5,513.994,13,597,13c77.327,0,135-10.5,200.999-10.5c95.996,0,402.001,0,402.001,0"
+        />
+    </svg>
+</template>
+<template ngSwitchWhen="kozakura">
+    <svg class="graphic graphic--kozakura" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"
+        />
+    </svg>
+</template>
+</span>

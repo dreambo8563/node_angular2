@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', 'angular2/http', './shadedProgressBars'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', 'angular2/http', './shadedProgressBars', './inputEffects'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './shadedP
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, http_1, shadedProgressBars_1;
+    var core_1, router_1, http_1, shadedProgressBars_1, inputEffects_1;
     var Weather;
     return {
         setters:[
@@ -25,37 +25,40 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './shadedP
             },
             function (shadedProgressBars_1_1) {
                 shadedProgressBars_1 = shadedProgressBars_1_1;
+            },
+            function (inputEffects_1_1) {
+                inputEffects_1 = inputEffects_1_1;
             }],
         execute: function() {
             Weather = (function () {
                 function Weather(http, _route) {
-                    var _this = this;
                     this.hourly_time = [];
                     this.hourly_tmp = [];
                     this.hourly_pres = [];
                     this.hourly_hum = [];
                     this.hourly_svg = [];
                     this.options = { color: "dark", move: false, rotate: false, ruler: "ruler-2" };
+                    this._title = "Password";
+                    this._inputStyle = "shoko";
                     this.firstHeaders = new http_1.Headers();
                     this.firstHeaders.append('apikey', '1b3e35e5bdb4cced72fae8c2244668a0');
                     this.opts = new http_1.RequestOptions();
                     this.opts.headers = this.firstHeaders;
-                    http.get('http://apis.baidu.com/heweather/weather/free?city=beijing', this.opts).subscribe(function (res) {
-                        _this.weatherData = res.json();
-                        _this.weatherData = _this.weatherData['HeWeather data service 3.0'][0];
-                        // console.log(this.weatherData);
-                        for (var _i = 0, _a = _this.weatherData.hourly_forecast; _i < _a.length; _i++) {
-                            var v = _a[_i];
-                            var time = v.date.split(" ")[1];
-                            time = Number(time.split(":")[0]);
-                            _this.hourly_time.push(time);
-                            var obj = new Object();
-                            obj = { time: parseInt(time), tmp: parseInt(v.tmp) };
-                            _this.hourly_svg.push(obj);
-                            _this.hourly_tmp.push(parseInt(v.tmp));
-                        }
-                        // console.log(this.hourly_time, this.hourly_tmp);
-                    });
+                    // http.get('http://apis.baidu.com/heweather/weather/free?city=beijing', this.opts).subscribe(res=> {
+                    //     this.weatherData = res.json();
+                    //     this.weatherData = this.weatherData['HeWeather data service 3.0'][0];
+                    //     // console.log(this.weatherData);
+                    //     for (let v of this.weatherData.hourly_forecast) {
+                    //         let time = v.date.split(" ")[1];
+                    //         time = Number(time.split(":")[0]);
+                    //         this.hourly_time.push(time);
+                    //         let obj = new Object();
+                    //         obj = { time: parseInt(time), tmp: parseInt(v.tmp) }
+                    //         this.hourly_svg.push(obj);
+                    //         this.hourly_tmp.push(parseInt(v.tmp));
+                    //     }
+                    //     // console.log(this.hourly_time, this.hourly_tmp);
+                    // })
                 }
                 Weather.prototype.ngAfterViewChecked = function () {
                     this.InitChart();
@@ -113,8 +116,8 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './shadedP
                     core_1.Component({
                         selector: 'weather',
                         providers: [http_1.HTTP_PROVIDERS],
-                        directives: [shadedProgressBars_1.ShadedProgressBars],
-                        template: "\n    <div  *ngIf=\"weatherData\">\n       <div class=\"row\">\n            <dir class=\"col-xs-3\">\n                <h3> \u4ECA\u65E5\u5929\u6C14</h3>\n            </dir>\n            <div class=\"col-xs-8 col-xs-offset-1\">\n                <div class=\"row\">\n                    <div class=\"col-xs-4\">\n                        \u5F53\u524D\u6E29\u5EA6(\u6444\u6C0F\u5EA6):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.tmp}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u6E7F\u5EA6(%):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.hum}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u5929\u6C14\u72B6\u51B5:\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.cond.txt}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u964D\u96E8\u91CF(mm):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.pcpn}}\n                    </div>\n                </div>\n            </div>\n        </div>\n   <dir class=\"col-xs-3\">\n            <h3> \u4ECA\u65E5\u9884\u62A5</h3>\n   </dir>\n <svg class=\"col-xs-8\" id=\"visualisation_today\" width=\"1000\" style=\"padding-left: 53px;\" height=\"500\"></svg>\n    \n    \n </div>\n \n <shadedProgressBars width=\"600px\" value=\"35\" [options]=\"options\"></shadedProgressBars>\n    "
+                        directives: [shadedProgressBars_1.ShadedProgressBars, inputEffects_1.InputEffects],
+                        template: "\n    <div  *ngIf=\"weatherData\">\n       <div class=\"row\">\n            <dir class=\"col-xs-3\">\n                <h3> \u4ECA\u65E5\u5929\u6C14</h3>\n            </dir>\n            <div class=\"col-xs-8 col-xs-offset-1\">\n                <div class=\"row\">\n                    <div class=\"col-xs-4\">\n                        \u5F53\u524D\u6E29\u5EA6(\u6444\u6C0F\u5EA6):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.tmp}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u6E7F\u5EA6(%):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.hum}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u5929\u6C14\u72B6\u51B5:\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.cond.txt}}\n                    </div>\n                    <div class=\"col-xs-4\">\n                        \u964D\u96E8\u91CF(mm):\n                    </div>\n                    <div class=\"col-xs-8\">\n                        {{weatherData.now.pcpn}}\n                    </div>\n                </div>\n            </div>\n        </div>\n   <dir class=\"col-xs-3\">\n            <h3> \u4ECA\u65E5\u9884\u62A5</h3>\n   </dir>\n <svg class=\"col-xs-8\" id=\"visualisation_today\" width=\"1000\" style=\"padding-left: 53px;\" height=\"500\"></svg>\n    \n    \n </div>\n \n <shadedProgressBars width=\"600px\" value=\"35\" [options]=\"options\"></shadedProgressBars>\n <inputEffects height=\"180%\" width=\"300px\" id=\"coolInput\" [title]=\"_title\" [inputStyle]=\"_inputStyle\"></inputEffects>\n    "
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], Weather);
