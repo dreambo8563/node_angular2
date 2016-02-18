@@ -10,7 +10,7 @@ import {ArticleItem} from './components/articleItem';
 
 
 @Component({
-    selector: 'my-app',
+    selector: 'myapp',
     template: `
  <nav class="navbar navbar-inverse">
   <div class="container" role="navigation">

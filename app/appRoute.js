@@ -45,7 +45,7 @@ System.register(['angular2/router', 'angular2/core', './components/weather', './
                 };
                 AppRoute = __decorate([
                     core_1.Component({
-                        selector: 'my-app',
+                        selector: 'myapp',
                         template: "\n <nav class=\"navbar navbar-inverse\">\n  <div class=\"container\" role=\"navigation\">\n   <ul class=\"nav navbar-nav\">\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['Weather']\">Weather</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['DemoFormSku']\">DemoFormSku</a></li>\n      <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['ParentApp','NumberList']\">Double</a></li>\n     <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['ParentApp',['Alert']]\">ParentApp</a></li>\n          <li (click)=\"loopNav($event)\"> <a [routerLink]=\"['ArticleItem']\">ArticleItem</a></li>\n    </ul>\n  </div>\n </nav>   \n <router-outlet></router-outlet>\n  <router-outlet name=\"alert\"></router-outlet>\n  ",
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
