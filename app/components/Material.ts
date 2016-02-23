@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {RotateDirective} from '../directives/rotate';
 import {ShakeOpacityDirective} from '../directives/shake-opacity';
 
@@ -87,7 +86,7 @@ the component code.
   </section>
 </md-content>
     `,
-    directives: [MATERIAL_DIRECTIVES,RotateDirective,ShakeOpacityDirective]
+    directives: [RotateDirective,ShakeOpacityDirective]
 })
 export class Materials {
     title1: string;
