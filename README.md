@@ -1,4 +1,7 @@
 # node_angular2
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/dreambo8563/node_angular2.svg)](https://greenkeeper.io/)
+
 Environment for Node &amp; angular2 with gulp configuration for scss and liveload TS
 
 #branch-ng-book2
